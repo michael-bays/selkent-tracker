@@ -24,6 +24,7 @@ body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;min-
 .tab-btn{padding:12px 28px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;letter-spacing:1px;text-transform:uppercase;border:none;background:transparent;color:rgba(255,255,255,.55);cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;position:relative;top:1px;}
 .tab-btn.active-league{color:#fff;border-bottom-color:#fff;}
 .tab-btn.active-shield{color:#fff;border-bottom-color:rgba(255,255,255,.8);}
+.tab-btn.active-cup{color:#f0c040;border-bottom-color:#f0c040;}
 .tab-btn:hover{color:rgba(255,255,255,.9);}
 .controls{padding:14px 24px;background:var(--surface);border-bottom:2px solid var(--border);display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
 .ctrl-label{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;white-space:nowrap;}
@@ -204,6 +205,7 @@ tbody td.num{text-align:center;color:var(--muted);}
   <div class="tab-bar" id="tab-bar" style="display:none;">
     <button class="tab-btn active-league" id="tab-league" onclick="switchTab('league')">⚽ League</button>
     <button class="tab-btn" id="tab-shield" onclick="switchTab('shield')">🛡️ Selkent Shield</button>
+    <button class="tab-btn" id="tab-cup" onclick="switchTab('cup')">🏆 Selkent Cup</button>
   </div>
 </header>
 
@@ -484,6 +486,48 @@ tbody td.num{text-align:center;color:var(--muted);}
   </div>
 </main></div>
 
+<!-- ═══ CUP SECTION ═══ -->
+<div id="cup-section" style="display:none;"><main>
+  <div style="background:linear-gradient(135deg,rgba(212,160,23,.1),rgba(212,160,23,.04));border:1px solid rgba(212,160,23,.3);border-radius:12px;padding:16px 20px;margin-bottom:18px;display:flex;align-items:center;gap:14px;">
+    <span style="font-size:28px;">🏆</span>
+    <div><h3 style="font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:20px;color:#b7860d;">Selkent Cup 2025/26</h3><p style="font-size:12px;color:var(--muted);margin-top:2px;">AFC Green Court Dukes · Knockout Competition</p></div>
+  </div>
+  <div id="cup-rounds"></div>
+  <div class="paste-section">
+    <h3>🏆 Add Cup Result</h3><p>Enter the result and round for a new cup game.</p>
+    <div class="paste-controls" style="margin-bottom:10px;">
+      <span class="ctrl-label">Round:</span>
+      <input type="text" id="cup-round-input" placeholder="e.g. Round 1, Quarter Final…" style="background:var(--surface2);border:1.5px solid var(--border);border-radius:8px;padding:9px 14px;color:var(--text);font-family:'Barlow',sans-serif;font-size:14px;outline:none;min-width:200px;">
+    </div>
+    <div class="paste-controls" style="margin-bottom:10px;">
+      <span class="ctrl-label">Opponent:</span>
+      <input type="text" id="cup-opp-input" placeholder="Opponent name" style="background:var(--surface2);border:1.5px solid var(--border);border-radius:8px;padding:9px 14px;color:var(--text);font-family:'Barlow',sans-serif;font-size:14px;outline:none;min-width:200px;">
+      <span class="ctrl-label" style="margin-left:10px;">Venue:</span>
+      <select id="cup-venue-input" style="background:var(--surface2);border:1.5px solid var(--border);border-radius:8px;padding:9px 14px;color:var(--text);font-family:'Barlow',sans-serif;font-size:14px;outline:none;">
+        <option value="H">Home</option><option value="A">Away</option>
+      </select>
+    </div>
+    <div class="paste-controls" style="margin-bottom:10px;">
+      <span class="ctrl-label">Score (Dukes first):</span>
+      <input type="number" id="cup-gf-input" placeholder="GF" min="0" style="background:var(--surface2);border:1.5px solid var(--border);border-radius:8px;padding:9px 14px;color:var(--text);font-family:'Barlow',sans-serif;font-size:14px;outline:none;width:70px;">
+      <span style="font-size:18px;font-weight:700;color:var(--muted);">–</span>
+      <input type="number" id="cup-ga-input" placeholder="GA" min="0" style="background:var(--surface2);border:1.5px solid var(--border);border-radius:8px;padding:9px 14px;color:var(--text);font-family:'Barlow',sans-serif;font-size:14px;outline:none;width:70px;">
+    </div>
+    <div class="paste-controls" style="margin-bottom:10px;">
+      <span class="ctrl-label">Result:</span>
+      <select id="cup-outcome-input" style="background:var(--surface2);border:1.5px solid var(--border);border-radius:8px;padding:9px 14px;color:var(--text);font-family:'Barlow',sans-serif;font-size:14px;outline:none;">
+        <option value="W">Win</option><option value="L">Loss</option><option value="D">Draw</option>
+      </select>
+      <span class="ctrl-label" style="margin-left:10px;">Date:</span>
+      <input type="text" id="cup-date-input" placeholder="DD/MM/YY" style="background:var(--surface2);border:1.5px solid var(--border);border-radius:8px;padding:9px 14px;color:var(--text);font-family:'Barlow',sans-serif;font-size:14px;outline:none;width:110px;">
+    </div>
+    <div class="paste-controls">
+      <button class="btn-update" style="background:#b7860d;" onclick="addCupResult()">Add Result</button>
+      <div class="update-status" id="cup-update-status"></div>
+    </div>
+  </div>
+</main></div>
+
 <!-- ═══ HOME SEARCH (landing page search bar) ═══ -->
 <div id="home-search-wrap" style="display:none;width:100%;max-width:480px;margin-bottom:32px;position:relative;">
   <input type="text" id="home-search" placeholder="🔍  Search any team…" autocomplete="off"
@@ -500,7 +544,7 @@ function enterMasterSection(s){
   if(s==='team'){
     document.getElementById('selkent-header').style.display='none';
     document.getElementById('team-hub-section').style.display='block';
-    ['league-section','shield-section','league-controls','shield-controls','tab-bar','home-btn','logo-manage-btn','combined-page'].forEach(function(id){
+    ['league-section','shield-section','cup-section','league-controls','shield-controls','tab-bar','home-btn','logo-manage-btn','combined-page'].forEach(function(id){
       var el=document.getElementById(id); if(el) el.style.display='none';
     });
     if(Object.keys(hubPlayers).length===0) initHubPlayers();
@@ -520,7 +564,7 @@ function goHome(){ goMasterHome(); }
 function goMasterHome(){
   document.getElementById('master-landing').style.display='flex';
   document.getElementById('selkent-header').style.display='none';
-  ['team-hub-section','combined-page','league-section','shield-section','league-controls','shield-controls','combined-page'].forEach(function(id){
+  ['team-hub-section','combined-page','league-section','shield-section','cup-section','league-controls','shield-controls','combined-page'].forEach(function(id){
     var el=document.getElementById(id); if(el) el.style.display='none';
   });
   var tb=document.getElementById('tab-bar'); if(tb) tb.style.display='none';
@@ -1042,18 +1086,20 @@ var HUB_MATCHES_RAW=[
   ["vs Slade Green Knights Green (h)","League","W","4-1","Reegan John Stockdale","","Daniel x2, Aleckie x2"],
   ["vs Castle Hill United (a)","League","D","1-1","Alfie Wakeman","","Ricky"],
   ["vs Punjab United (h)","League","L","1-5","Reegan John Stockdale","","Daniel"],
-  ["vs LIC (h)","Cup","W","2-1","Aidan Bays","","Ricky, Aleckie"],
+  ["vs Danson Sports Purple (a)","League","W","3-0","","",""],
   ["vs Guru Nanak (h)","League","L","3-7","Aidan Bays","","Archie, Ricky, Aleckie"],
   ["vs Northumberland Heath (a)","League","W","3-9","Teddy Booker","","Alfie, Ricky x2, Daniel x3, Aleckie x3"],
-  ["vs Russellers (a)","Cup","L","4-3","Luke Manktelow","","Alfie, Daniel, Aidan"],
   ["vs Punjab United (a)","League","L","2-0","Christopher Barnes","",""],
   ["vs Castle Hill United (h)","League","W","7-3","Alfie Wakeman","","Aleckie x3, Daniel x2, Alfie x2"],
   ["vs Hayden Youth Panthers (h)","League","W","4-1","Jamie Hope","","Aleckie, Daniel x2, Ricky"],
+  ["vs LIC (h)","Cup","W","2-1","Aidan Bays","","Ricky, Aleckie"],
   ["vs Northumberland Heath (h)","League","L","3-7","Oliver Lee-Healey","","Aleckie x3"],
   ["vs Hayden Youth Panthers (a)","League","D","2-2","Aidan Bays","","Ricky, Daniel"],
   ["vs Dartford Royals Blue (h)","League","L","0-1","Christopher Barnes","",""],
   ["vs Sutton Dynamos (a)","League","D","5-5","Daniel Kingsley-Lavoe","","Daniel x2, Ricky, Aleckie, Alfie"],
+  ["vs Russellers (a)","Cup","L","4-3","Luke Manktelow","","Alfie, Daniel, Aidan"],
   ["vs Slade Green Knights Green (a)","League","W","1-4","Archie Brackell","","Aidan x2, Daniel, Alfie"],
+  ["vs Danson Sports Purple (h)","League","W","3-0","","",""],
   ["vs Sutton Dynamos (h)","League","W","2-1","Reegan John Stockdale","","Ollie, Daniel"],
   ["vs Dartford Royals Blue (a)","League","W","1-2","George Winter","","Ricky, George"],
   ["vs Guru Nanak (a)","League","W","2-3","Aidan Bays","","Jax x2, Daniel"],
@@ -1066,14 +1112,14 @@ var hubMatches=[];
 function getDukesRecord(){
   var W=0,D=0,L=0,GF=0,GA=0;
   HUB_MATCHES_RAW.forEach(function(r){
-    if(r[1]==='Cup') return; // league only
-    var parts=r[3].split('-');
-    var gf=parseInt(parts[0]),ga=parseInt(parts[1]);
-    GF+=gf; GA+=ga;
+    // Wins/Draws/Losses count all games
     if(r[2]==='W'){W++;}else if(r[2]==='D'){D++;}else{L++;}
+    // Goals For/Against: all games
+    var parts=r[3].split('-');
+    GF+=parseInt(parts[0])||0;
+    GA+=parseInt(parts[1])||0;
   });
-  var leagueGames=HUB_MATCHES_RAW.filter(function(r){return r[1]!=='Cup';}).length;
-  return{W:W,D:D,L:L,GF:GF,GA:GA,P:leagueGames};
+  return{W:W,D:D,L:L,GF:GF,GA:GA,P:HUB_MATCHES_RAW.length};
 }
 
 function hubResolve(raw){
@@ -1203,7 +1249,6 @@ function renderHubSquad(){
     {val:rec.L,  lbl:'Losses',          col:'var(--red)'},
     {val:rec.GF, lbl:'Goals For',       col:'var(--green)'},
     {val:rec.GA, lbl:'Goals Against',   col:'var(--red)'},
-    {val:totalGoals, lbl:'Squad Goals', col:'#6b8a1a'},
     {val:topScorer?topScorer.name.split(' ')[0]:'—', lbl:'Top Scorer',        col:'#6b8a1a'},
     {val:topMotm?topMotm.name.split(' ')[0]:'—',     lbl:"Manager's POTM",   col:'var(--accent)'},
     {val:topPotm?topPotm.name.split(' ')[0]:'—',     lbl:"Supporters' POTM", col:'#b7860d'},
@@ -1308,10 +1353,13 @@ function _switchTab(t){
   activeTab=t;
   document.getElementById('league-section').style.display=t==='league'?'block':'none';
   document.getElementById('shield-section').style.display=t==='shield'?'block':'none';
+  document.getElementById('cup-section').style.display=t==='cup'?'block':'none';
   document.getElementById('league-controls').style.display=t==='league'?'flex':'none';
   document.getElementById('shield-controls').style.display=t==='shield'?'flex':'none';
   document.getElementById('tab-league').className='tab-btn'+(t==='league'?' active-league':'');
   document.getElementById('tab-shield').className='tab-btn'+(t==='shield'?' active-shield':'');
+  document.getElementById('tab-cup').className='tab-btn'+(t==='cup'?' active-cup':'');
+  if(t==='cup') renderCupSection();
 }
 
 // ════════════════════════════════════════════════════════════════════
@@ -1563,7 +1611,7 @@ function showCombinedProfile(teamName){
   document.getElementById('master-landing').style.display='none';
   document.getElementById('combined-page').style.display='block';
   document.getElementById('selkent-header').style.display='block';
-  ['league-section','shield-section','league-controls','shield-controls','team-hub-section'].forEach(function(id){document.getElementById(id).style.display='none';});
+  ['league-section','shield-section','cup-section','league-controls','shield-controls','team-hub-section'].forEach(function(id){document.getElementById(id).style.display='none';});
   document.getElementById('tab-bar').style.display='none';
   document.getElementById('home-btn').style.display='none';
   document.getElementById('logo-manage-btn').style.display='none';
@@ -1753,8 +1801,73 @@ function initCollapsibles(){
 }
 
 // ════════════════════════════════════════════════════════════════════
-// INIT
+// SELKENT CUP
 // ════════════════════════════════════════════════════════════════════
+var CUP_RESULTS=[
+  {round:'Round 1', date:'12/10/25', opp:'LIC FC',     venue:'H', gf:2, ga:1, outcome:'W'},
+  {round:'Round 2', date:'02/11/25', opp:'Russellers', venue:'A', gf:3, ga:4, outcome:'L'},
+];
+
+function renderCupSection(){
+  var el=document.getElementById('cup-rounds');
+  if(!CUP_RESULTS.length){el.innerHTML='<div class="no-results" style="padding:40px;text-align:center;color:var(--muted);">No cup results recorded yet.</div>';return;}
+  var W=CUP_RESULTS.filter(function(r){return r.outcome==='W';}).length;
+  var L=CUP_RESULTS.filter(function(r){return r.outcome==='L';}).length;
+  var D=CUP_RESULTS.filter(function(r){return r.outcome==='D';}).length;
+  var GF=CUP_RESULTS.reduce(function(s,r){return s+r.gf;},0);
+  var GA=CUP_RESULTS.reduce(function(s,r){return s+r.ga;},0);
+  var eliminated=CUP_RESULTS.some(function(r){return r.outcome==='L';});
+  var statusHtml=eliminated
+    ?'<div style="display:inline-flex;align-items:center;gap:6px;background:rgba(192,57,43,.1);border:1px solid rgba(192,57,43,.3);border-radius:10px;padding:4px 12px;font-size:12px;font-weight:700;color:#c0392b;">❌ Eliminated</div>'
+    :'<div style="display:inline-flex;align-items:center;gap:6px;background:rgba(26,122,60,.1);border:1px solid rgba(26,122,60,.3);border-radius:10px;padding:4px 12px;font-size:12px;font-weight:700;color:#1a7a3c;">✅ Still In It</div>';
+  var summaryHtml='<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;margin-bottom:18px;">'
+    +[{v:CUP_RESULTS.length,l:'Played',c:'var(--accent)'},{v:W,l:'Wins',c:'var(--green)'},{v:D,l:'Draws',c:'var(--amber)'},{v:L,l:'Losses',c:'var(--red)'},{v:GF,l:'Goals For',c:'var(--green)'},{v:GA,l:'Goals Against',c:'var(--red)'}]
+    .map(function(s){return'<div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center;"><div style="font-family:\'Barlow Condensed\',sans-serif;font-weight:900;font-size:28px;line-height:1;color:'+s.c+';">'+s.v+'</div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px;">'+s.l+'</div></div>';}).join('')
+    +'</div>';
+  var rowsHtml=CUP_RESULTS.slice().sort(function(a,b){return dateSort(a.date)-dateSort(b.date);}).map(function(r){
+    var bg=r.outcome==='W'?'#1a7a3c':r.outcome==='D'?'#d68910':'#c0392b';
+    var venueStr=r.venue==='H'?'Home':'Away';
+    var scoreStr=r.gf+' – '+r.ga;
+    var oppLogo=logoImgTag(r.opp,20);
+    return'<div class="result-row" style="padding:12px 16px;">'
+      +'<div style="font-family:\'Barlow Condensed\',sans-serif;font-weight:700;font-size:12px;color:var(--accent);width:90px;flex-shrink:0;">'+r.round+'</div>'
+      +'<div class="result-date" style="width:66px;">'+r.date+'</div>'
+      +'<div style="font-size:11px;color:var(--muted);width:50px;flex-shrink:0;">'+venueStr+'</div>'
+      +'<div class="result-teams" style="display:flex;align-items:center;gap:6px;">'+oppLogo+'<span style="font-weight:600;">'+r.opp+'</span></div>'
+      +'<div class="result-score">'+scoreStr+'</div>'
+      +'<div class="result-outcome" style="background:'+bg+';color:#fff;">'+r.outcome+'</div>'
+      +'</div>';
+  }).join('');
+  el.innerHTML=summaryHtml
+    +'<div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">'+statusHtml+'</div>'
+    +'<div class="panel" style="margin-bottom:18px;">'
+    +'<div class="panel-header">🏆 <span>Cup Results</span><span class="ci">▼</span></div>'
+    +'<div class="panel-collapsible"><div class="results-list">'+rowsHtml+'</div></div>'
+    +'</div>';
+  initCollapsibles();
+}
+
+function addCupResult(){
+  var round=document.getElementById('cup-round-input').value.trim();
+  var opp=document.getElementById('cup-opp-input').value.trim();
+  var venue=document.getElementById('cup-venue-input').value;
+  var gf=parseInt(document.getElementById('cup-gf-input').value);
+  var ga=parseInt(document.getElementById('cup-ga-input').value);
+  var outcome=document.getElementById('cup-outcome-input').value;
+  var date=document.getElementById('cup-date-input').value.trim();
+  var st=document.getElementById('cup-update-status');
+  if(!round||!opp||isNaN(gf)||isNaN(ga)){st.className='update-status update-err';st.textContent='Please fill in all fields.';return;}
+  CUP_RESULTS.push({round:round,date:date,opp:opp,venue:venue,gf:gf,ga:ga,outcome:outcome});
+  document.getElementById('cup-round-input').value='';
+  document.getElementById('cup-opp-input').value='';
+  document.getElementById('cup-gf-input').value='';
+  document.getElementById('cup-ga-input').value='';
+  document.getElementById('cup-date-input').value='';
+  st.className='update-status update-ok';st.textContent='✓ Added '+round+' result vs '+opp+'.';
+  renderCupSection();
+}
+
+
 // Hide the old landing page element if it exists
 var oldLanding=document.getElementById('landing-page');
 if(oldLanding) oldLanding.style.display='none';
