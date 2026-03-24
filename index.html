@@ -506,6 +506,7 @@ function enterMasterSection(s){
     document.getElementById('hub-squad').style.display='block';
     document.getElementById('hub-player').style.display='none';
     document.getElementById('hub-back-btn').style.display='none';
+    document.getElementById('hub-goals-chart-wrap').style.display='block';
     renderHubSquad();
   } else {
     document.getElementById('selkent-header').style.display='block';
@@ -530,6 +531,7 @@ function showSquad(){
   document.getElementById('hub-player').style.display='none';
   document.getElementById('hub-squad').style.display='block';
   document.getElementById('hub-back-btn').style.display='none';
+  document.getElementById('hub-goals-chart-wrap').style.display='block';
 }
 function handleHubFile(f){
   if(!f||!f.name.endsWith('.csv')){var e=document.getElementById('hub-err');e.textContent='Please upload a .csv file.';e.style.display='block';return;}
@@ -541,6 +543,7 @@ function handleHubFile(f){
       document.getElementById('hub-squad').style.display='block';
       document.getElementById('hub-player').style.display='none';
       document.getElementById('hub-back-btn').style.display='none';
+      document.getElementById('hub-goals-chart-wrap').style.display='block';
       renderHubSquad();
     }catch(err){var el=document.getElementById('hub-err');el.textContent='Could not parse CSV: '+err.message;el.style.display='block';}
   };
@@ -556,6 +559,7 @@ function showHubPlayer(name){
   document.getElementById('hub-squad').style.display='none';
   document.getElementById('hub-player').style.display='block';
   document.getElementById('hub-back-btn').style.display='block';
+  document.getElementById('hub-goals-chart-wrap').style.display='none';
   var initials=name.split(' ').map(function(w){return w[0];}).join('').slice(0,2).toUpperCase();
   document.getElementById('hub-p-av').textContent=initials;
   document.getElementById('hub-p-name').textContent=name;
@@ -572,7 +576,7 @@ function showHubPlayer(name){
   ].map(function(s){return '<div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center;"><div style="font-family:\'Barlow Condensed\',sans-serif;font-weight:800;font-size:28px;line-height:1;color:'+s.col+';">'+s.val+'</div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:3px;">'+s.lbl+'</div></div>';}).join('');
   document.getElementById('hub-p-matches').innerHTML=p.matches.map(function(m,i){
     var badges=[];
-    if(m.goals>0) badges.push('<span style="background:rgba(26,122,60,.1);color:var(--green);border:1px solid rgba(26,122,60,.2);padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;">⚽ '+(m.goals>1?m.goals+' goals':'Goal')+'</span>');
+    if(m.goals>0) badges.push('<span style="letter-spacing:1px;font-size:14px;">'+('⚽').repeat(m.goals)+'</span>');
     if(m.isMotm) badges.push('<span style="background:rgba(26,111,168,.1);color:var(--accent);border:1px solid rgba(26,111,168,.2);padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;">🔵 Manager\'s POTM</span>');
     if(m.isPotm) badges.push('<span style="background:rgba(183,134,13,.1);color:#b7860d;border:1px solid rgba(183,134,13,.2);padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;">⭐ Supporters\' POTM</span>');
     var noInv=!m.goals&&!m.isMotm&&!m.isPotm;
@@ -1020,7 +1024,7 @@ var SQUAD=[
   {name:'George Winter',         apps:17,goals:1},
 ];
 
-// First name → full name lookup (includes removed players mapped to null)
+// First name -> full name lookup (includes removed players mapped to null)
 var hubFirstNameMap={
   'aleckie':'Aleckie Arthur','christopher':'Christopher Barnes','chris':'Christopher Barnes',
   'aidan':'Aidan Bays','teddy':'Teddy Booker','archie':'Archie Brackell',
@@ -1034,35 +1038,29 @@ var hubFirstNameMap={
 // format: [detail, comp, outcome, score, motm, potm, goals_string]
 // goals_string uses same "Name x2, Name" format; Ricky = removed player
 var HUB_MATCHES_RAW=[
-  ["vs Slade Green Knights Green (h)","League","W","4-1","Reegan John Stockdale","",""],
-  ["vs Castle Hill United (a)","League","D","1-1","Alfie Wakeman","",""],
-  ["vs Punjab United (h)","League","L","1-5","Reegan John Stockdale","",""],
-  ["vs LIC (h)","Cup","W","2-1","Aidan Bays","",""],
-  ["vs Guru Nanak (h)","League","L","3-7","Aidan Bays","",""],
-  ["vs Northumberland Heath (a)","League","W","3-9","Teddy Booker","",""],
-  ["vs Russellers (a)","Cup","L","4-3","Luke Manktelow","",""],
+  ["vs Slade Green Knights Green (h)","League","W","4-1","Reegan John Stockdale","","Daniel x2, Aleckie x2"],
+  ["vs Castle Hill United (a)","League","D","1-1","Alfie Wakeman","","Ricky"],
+  ["vs Punjab United (h)","League","L","1-5","Reegan John Stockdale","","Daniel"],
+  ["vs LIC (h)","Cup","W","2-1","Aidan Bays","","Ricky, Aleckie"],
+  ["vs Guru Nanak (h)","League","L","3-7","Aidan Bays","","Archie, Ricky, Aleckie"],
+  ["vs Northumberland Heath (a)","League","W","3-9","Teddy Booker","","Alfie, Ricky x2, Daniel x3, Aleckie x3"],
+  ["vs Russellers (a)","Cup","L","4-3","Luke Manktelow","","Alfie, Daniel, Aidan"],
   ["vs Punjab United (a)","League","L","2-0","Christopher Barnes","",""],
-  ["vs Castle Hill United (h)","League","W","7-3","Alfie Wakeman","",""],
-  ["vs Hayden Youth Panthers (h)","League","W","4-1","Jamie Hope","",""],
-  ["vs Northumberland Heath (h)","League","L","3-7","Oliver Lee-Healey","",""],
-  ["vs Hayden Youth Panthers (a)","League","D","2-2","Aidan Bays","",""],
+  ["vs Castle Hill United (h)","League","W","7-3","Alfie Wakeman","","Aleckie x3, Daniel x2, Alfie x2"],
+  ["vs Hayden Youth Panthers (h)","League","W","4-1","Jamie Hope","","Aleckie, Daniel x2, Ricky"],
+  ["vs Northumberland Heath (h)","League","L","3-7","Oliver Lee-Healey","","Aleckie x3"],
+  ["vs Hayden Youth Panthers (a)","League","D","2-2","Aidan Bays","","Ricky, Daniel"],
   ["vs Dartford Royals Blue (h)","League","L","0-1","Christopher Barnes","",""],
-  ["vs Sutton Dynamos (a)","League","D","5-5","Daniel Kingsley-Lavoe","",""],
-  ["vs Slade Green Knights Green (a)","League","W","1-4","Archie Brackell","",""],
-  ["vs Sutton Dynamos (h)","League","W","2-1","Reegan John Stockdale","",""],
-  ["vs Dartford Royals Blue (a)","League","W","1-2","George Winter","",""],
-  ["vs Guru Nanak (a)","League","W","2-3","Aidan Bays","",""],
-  ["vs Cray Valley (PM) FC Black","Shield","W","3-2","Luke Manktelow","",""],
+  ["vs Sutton Dynamos (a)","League","D","5-5","Daniel Kingsley-Lavoe","","Daniel x2, Ricky, Aleckie, Alfie"],
+  ["vs Slade Green Knights Green (a)","League","W","1-4","Archie Brackell","","Aidan x2, Daniel, Alfie"],
+  ["vs Sutton Dynamos (h)","League","W","2-1","Reegan John Stockdale","","Ollie, Daniel"],
+  ["vs Dartford Royals Blue (a)","League","W","1-2","George Winter","","Ricky, George"],
+  ["vs Guru Nanak (a)","League","W","2-3","Aidan Bays","","Jax x2, Daniel"],
+  ["vs Cray Valley (PM) FC Black","Shield","W","3-2","Luke Manktelow","","Jax, Aleckie x2"],
 ];
 
 var hubPlayers={}, hubTotalGames=19, hubSortCol='apps', hubSortDir=-1;
 var hubMatches=[];
-
-function initHubPlayers(){
-  hubPlayers={};
-  SQUAD.forEach(function(s){ hubPlayers[s.name]={name:s.name,apps:s.apps,goals:s.goals,motm:0,potm:0,matches:[]}; });
-  hubTotalGames=19;
-}
 
 function getDukesRecord(){
   var W=0,D=0,L=0,GF=0,GA=0;
@@ -1210,6 +1208,7 @@ function renderHubSquad(){
     {val:topPotm?topPotm.name.split(' ')[0]:'—',     lbl:"Supporters' POTM", col:'#b7860d'},
   ].map(function(c){return '<div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center;"><div style="font-family:\'Barlow Condensed\',sans-serif;font-weight:900;font-size:26px;line-height:1;color:'+c.col+';">'+c.val+'</div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px;">'+c.lbl+'</div></div>';}).join('');
   renderHubTable();
+  setTimeout(renderHubGoalsChart, 50);
 }
 
 function renderHubTable(){
