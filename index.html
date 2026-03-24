@@ -256,19 +256,43 @@ tbody td.num{text-align:center;color:var(--muted);}
 
 <!-- ═══ MASTER LANDING ═══ -->
 <div id="master-landing" style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 24px;background:var(--bg);">
-  <svg width="110" height="110" viewBox="0 0 130 130" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:16px;filter:drop-shadow(0 4px 16px rgba(28,63,94,0.2))">
-    <circle cx="65" cy="65" r="62" fill="#1c3f5e"/><circle cx="65" cy="65" r="62" fill="none" stroke="#2a6496" stroke-width="2"/>
-    <polygon points="65,30 73,36 71,45 65,48 59,45 57,36" fill="white"/>
-    <polygon points="80,42 88,47 86,57 80,59 75,55 75,46" fill="white"/>
-    <polygon points="78,66 74,76 65,76 58,72 58,63 65,59 73,62" fill="white" opacity="0.9"/>
-    <polygon points="50,66 55,62 62,63 62,72 55,76 48,73" fill="white"/>
-    <polygon points="42,47 50,42 55,46 55,55 49,59 42,57" fill="white"/>
-    <path id="ml-arcTop" d="M 18,65 A 47,47 0 0,1 112,65" fill="none"/>
-    <path id="ml-arcBot" d="M 22,72 A 47,47 0 0,0 108,72" fill="none"/>
-    <text font-family="'Barlow Condensed',Arial,sans-serif" font-weight="900" font-size="13" fill="white" letter-spacing="3"><textPath href="#ml-arcTop" startOffset="15%">SELKENT LEAGUE</textPath></text>
-    <text font-family="'Barlow Condensed',Arial,sans-serif" font-weight="700" font-size="10" fill="rgba(255,255,255,0.7)" letter-spacing="1.5"><textPath href="#ml-arcBot" startOffset="8%">SOUTH EAST LONDON &amp; KENT</textPath></text>
-    <rect x="45" y="84" width="40" height="14" rx="3" fill="rgba(255,255,255,0.15)"/>
-    <text x="65" y="95" text-anchor="middle" font-family="'Barlow Condensed',Arial,sans-serif" font-weight="800" font-size="11" fill="white" letter-spacing="1">2025–26</text>
+  <!-- AFC Green Court Dukes badge (SVG recreation) -->
+  <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:16px;filter:drop-shadow(0 4px 16px rgba(0,0,0,0.25))">
+    <!-- Outer circle - black border -->
+    <circle cx="60" cy="60" r="58" fill="#A6C842" stroke="#1a1a1a" stroke-width="4"/>
+    <!-- Inner black ring -->
+    <circle cx="60" cy="60" r="54" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+    <!-- Gold star at top -->
+    <polygon points="60,6 62.5,13.5 70,13.5 64,18 66.5,25.5 60,21 53.5,25.5 56,18 50,13.5 57.5,13.5" fill="#f0b429" stroke="#c8860a" stroke-width="0.5"/>
+    <!-- Shield body -->
+    <path d="M60,28 L78,34 L78,52 Q78,66 60,76 Q42,66 42,52 L42,34 Z" fill="white" stroke="#1a1a1a" stroke-width="2"/>
+    <!-- Red cross on shield -->
+    <rect x="56" y="29" width="8" height="46" fill="#cc0000" rx="1"/>
+    <rect x="43" y="47" width="34" height="8" fill="#cc0000" rx="1"/>
+    <!-- Black banner across shield -->
+    <rect x="38" y="60" width="44" height="14" rx="2" fill="#1a1a1a"/>
+    <text x="60" y="71" text-anchor="middle" font-family="'Barlow Condensed',Arial,sans-serif" font-weight="900" font-size="7.5" fill="white" letter-spacing="0.5">AFC GREEN COURT</text>
+    <!-- Gold laurel left -->
+    <g fill="#e8a020" stroke="#c8720a" stroke-width="0.3">
+      <ellipse cx="27" cy="52" rx="4" ry="7" transform="rotate(-30 27 52)"/>
+      <ellipse cx="22" cy="60" rx="4" ry="7" transform="rotate(-15 22 60)"/>
+      <ellipse cx="21" cy="69" rx="4" ry="7" transform="rotate(0 21 69)"/>
+      <ellipse cx="25" cy="78" rx="4" ry="7" transform="rotate(20 25 78)"/>
+      <ellipse cx="32" cy="85" rx="4" ry="7" transform="rotate(35 32 85)"/>
+    </g>
+    <!-- Gold laurel right -->
+    <g fill="#e8a020" stroke="#c8720a" stroke-width="0.3">
+      <ellipse cx="93" cy="52" rx="4" ry="7" transform="rotate(30 93 52)"/>
+      <ellipse cx="98" cy="60" rx="4" ry="7" transform="rotate(15 98 60)"/>
+      <ellipse cx="99" cy="69" rx="4" ry="7" transform="rotate(0 99 69)"/>
+      <ellipse cx="95" cy="78" rx="4" ry="7" transform="rotate(-20 95 78)"/>
+      <ellipse cx="88" cy="85" rx="4" ry="7" transform="rotate(-35 88 85)"/>
+    </g>
+    <!-- Bottom text arc -->
+    <path id="badge-arc" d="M 16,75 A 48,48 0 0,0 104,75" fill="none"/>
+    <text font-family="'Barlow Condensed',Arial,sans-serif" font-weight="900" font-size="9" fill="#1a1a1a" letter-spacing="1.5">
+      <textPath href="#badge-arc" startOffset="12%">UNDER 12 DUKES</textPath>
+    </text>
   </svg>
   <div style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:48px;letter-spacing:2px;color:var(--header-bg);text-align:center;line-height:1;">Welcome</div>
   <div style="font-size:14px;color:var(--muted);margin-top:8px;margin-bottom:44px;text-align:center;">Choose a section to get started</div>
@@ -301,17 +325,10 @@ tbody td.num{text-align:center;color:var(--muted);}
     <button onclick="showSquad()" id="hub-back-btn" style="display:none;background:rgba(0,0,0,.12);border:1.5px solid rgba(0,0,0,.2);border-radius:8px;color:var(--club-text);padding:7px 12px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;cursor:pointer;">← Squad</button>
   </div>
   <div style="padding:24px;max-width:1000px;margin:0 auto;">
-    <!-- Optional CSV upload -->
-    <div id="hub-upload" style="margin-bottom:16px;">
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;">
-        <div>
-          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;color:var(--text);">📋 Upload Results CSV <span style="font-size:12px;color:var(--muted);font-weight:400;">(optional — adds match-by-match detail)</span></div>
-          <div style="font-size:11px;color:var(--muted);margin-top:3px;">Columns: Match Details, League or Cup, Result, Player of the Match, Parent's Player of the Match, Goals</div>
-        </div>
-        <button onclick="document.getElementById('hub-csv').click()" style="background:#A6C842;border:none;border-radius:8px;padding:9px 20px;color:var(--club-text);font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:13px;letter-spacing:1px;cursor:pointer;flex-shrink:0;">Choose CSV</button>
-        <input type="file" id="hub-csv" accept=".csv" style="display:none;" onchange="handleHubFile(this.files[0])">
-      </div>
-      <div id="hub-err" style="color:var(--red);font-size:13px;margin-top:6px;display:none;"></div>
+    <!-- Goals over time chart -->
+    <div id="hub-goals-chart-wrap" style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px;margin-bottom:24px;">
+      <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:15px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:14px;">📈 <span style="color:var(--text);">Cumulative Goals Over the Season</span></div>
+      <canvas id="hub-goals-canvas" style="width:100%;max-height:220px;"></canvas>
     </div>
     <!-- Squad table -->
     <div id="hub-squad">
@@ -569,6 +586,7 @@ function handleHubFile(f){
 function hubSortSquad(col){
   if(col===hubSortCol) hubSortDir=-hubSortDir; else{hubSortCol=col;hubSortDir=-1;}
   renderHubTable();
+  setTimeout(renderHubGoalsChart, 50);
 }
 function showHubPlayer(name){
   var p=hubPlayers[name]; if(!p) return;
@@ -1038,9 +1056,43 @@ var SQUAD=[
   {name:'Alfie Wakeman',         apps:19,goals:6},
   {name:'George Winter',         apps:17,goals:1},
 ];
-var hubFirstNameMap={};
-SQUAD.forEach(function(p){ hubFirstNameMap[p.name.split(' ')[0].toLowerCase()]=p.name; });
-var hubPlayers={}, hubTotalGames=0, hubSortCol='apps', hubSortDir=-1;
+
+// First name → full name lookup (includes removed players mapped to null)
+var hubFirstNameMap={
+  'aleckie':'Aleckie Arthur','christopher':'Christopher Barnes','chris':'Christopher Barnes',
+  'aidan':'Aidan Bays','teddy':'Teddy Booker','archie':'Archie Brackell',
+  'jax':'Jax Colasanto','jamie':'Jamie Hope','daniel':'Daniel Kingsley-Lavoe',
+  'oliver':'Oliver Lee-Healey','ollie':'Oliver Lee-Healey','luke':'Luke Manktelow',
+  'reggie':'Reggie Murray','reegan':'Reegan John Stockdale','alfie':'Alfie Wakeman',
+  'george':'George Winter'
+};
+
+// Hard-coded match data — 19 matches
+// format: [detail, comp, outcome, score, motm, potm, goals_string]
+// goals_string uses same "Name x2, Name" format; Ricky = removed player
+var HUB_MATCHES_RAW=[
+  ["vs Slade Green Knights Green (h)","League","W","4-1","Reegan John Stockdale","",""],
+  ["vs Castle Hill United (a)","League","D","1-1","Alfie Wakeman","",""],
+  ["vs Punjab United (h)","League","L","1-5","Reegan John Stockdale","",""],
+  ["vs LIC (h)","Cup","W","2-1","Aidan Bays","",""],
+  ["vs Guru Nanak (h)","League","L","3-7","Aidan Bays","",""],
+  ["vs Northumberland Heath (a)","League","W","3-9","Teddy Booker","",""],
+  ["vs Russellers (a)","Cup","L","4-3","Luke Manktelow","",""],
+  ["vs Punjab United (a)","League","L","2-0","Christopher Barnes","",""],
+  ["vs Castle Hill United (h)","League","W","7-3","Alfie Wakeman","",""],
+  ["vs Hayden Youth Panthers (h)","League","W","4-1","Jamie Hope","",""],
+  ["vs Northumberland Heath (h)","League","L","3-7","Oliver Lee-Healey","",""],
+  ["vs Hayden Youth Panthers (a)","League","D","2-2","Aidan Bays","",""],
+  ["vs Dartford Royals Blue (h)","League","L","0-1","Christopher Barnes","",""],
+  ["vs Sutton Dynamos (a)","League","D","5-5","Daniel Kingsley-Lavoe","",""],
+  ["vs Slade Green Knights Green (a)","League","W","1-4","Archie Brackell","",""],
+  ["vs Sutton Dynamos (h)","League","W","2-1","Reegan John Stockdale","",""],
+  ["vs Dartford Royals Blue (a)","League","W","1-2","George Winter","",""],
+  ["vs Guru Nanak (a)","League","W","2-3","Aidan Bays","",""],
+  ["vs Cray Valley (PM) FC Black","Shield","W","3-2","Luke Manktelow","",""],
+];
+
+var hubPlayers={}, hubTotalGames=19, hubSortCol='apps', hubSortDir=-1;
 var hubMatches=[];
 
 function initHubPlayers(){
@@ -1050,63 +1102,128 @@ function initHubPlayers(){
 }
 
 function getDukesRecord(){
-  var T='AFC Green Court Dukes', W=0,D=0,L=0,GF=0,GA=0;
-  LEAGUE_RAW.Navy.forEach(function(r){
-    var home=r[1]===T, gf=home?r[2]:r[3], ga=home?r[3]:r[2];
+  var W=0,D=0,L=0,GF=0,GA=0;
+  HUB_MATCHES_RAW.forEach(function(r){
+    if(r[1]==='Cup') return; // league only
+    var parts=r[3].split('-');
+    var gf=parseInt(parts[0]),ga=parseInt(parts[1]);
     GF+=gf; GA+=ga;
-    if(r[2]>r[3]){if(home)W++;else L++;}
-    else if(r[2]===r[3]){D++;}
-    else{if(home)L++;else W++;}
+    if(r[2]==='W'){W++;}else if(r[2]==='D'){D++;}else{L++;}
   });
-  return{W:W,D:D,L:L,GF:GF,GA:GA,P:W+D+L};
+  var leagueGames=HUB_MATCHES_RAW.filter(function(r){return r[1]!=='Cup';}).length;
+  return{W:W,D:D,L:L,GF:GF,GA:GA,P:leagueGames};
 }
 
 function hubResolve(raw){
   if(!raw) return '';
   var fn=raw.trim().split(' ')[0].toLowerCase();
-  return hubFirstNameMap[fn]||raw.trim();
+  return hubFirstNameMap[fn]||null; // null = removed/unknown player
 }
+
 function hubParseGoals(raw){
   if(!raw) return [];
   return raw.split(',').map(function(p){
     p=p.trim(); if(!p) return null;
     var m=p.match(/^(.+?)\s+x(\d+)$/i);
-    return m?{name:hubResolve(m[1].trim()),goals:parseInt(m[2])}:{name:hubResolve(p),goals:1};
+    var name=m?hubResolve(m[1].trim()):hubResolve(p);
+    var goals=m?parseInt(m[2]):1;
+    return name?{name:name,goals:goals}:null;
   }).filter(Boolean);
 }
-function splitHubRow(line){
-  var res=[],cur='',inQ=false;
-  for(var i=0;i<line.length;i++){var c=line[i];if(c==='"'){inQ=!inQ;}else if(c===','&&!inQ){res.push(cur);cur='';}else cur+=c;}
-  res.push(cur); return res;
-}
-function cleanHub(s){return(s||'').trim().replace(/^"|"$/g,'').trim();}
 
-function parseHubCSV(text){
-  var lines=text.trim().split('\n').map(function(l){return l.trim();}).filter(Boolean);
-  if(lines.length<2) throw new Error('CSV appears empty.');
-  var hdrs=lines[0].split(',').map(function(h){return h.trim().toLowerCase().replace(/['"]/g,'');});
-  var col=function(q){return hdrs.findIndex(function(h){return h.includes(q);});};
-  var iMatch=col('match'),iComp=col('league'),iResult=col('result'),iMotm=col('player of the match'),iPotm=col('parent'),iGoals=col('goals');
-  initHubPlayers();
-  hubMatches=[]; hubTotalGames=lines.length-1;
-  for(var i=1;i<lines.length;i++){
-    var row=splitHubRow(lines[i]);
-    var detail=cleanHub(row[iMatch]),comp=cleanHub(row[iComp]),resRaw=cleanHub(row[iResult]);
-    var motmRaw=cleanHub(row[iMotm]),potmRaw=cleanHub(row[iPotm]),goalsRaw=cleanHub(row[iGoals]);
-    var rm=resRaw.match(/([WDL])\s*(\d+)\s*[-–]\s*(\d+)/i);
-    var outcome=rm?rm[1].toUpperCase():resRaw.toUpperCase().trim();
-    var score=rm?rm[2]+'–'+rm[3]:'';
-    var motmFull=hubResolve(motmRaw),potmFull=hubResolve(potmRaw),scorers=hubParseGoals(goalsRaw);
-    var m={num:i,detail:detail,comp:comp,outcome:outcome,score:score,motm:motmFull,potm:potmFull,scorers:scorers};
+function initHubPlayers(){
+  hubPlayers={};
+  SQUAD.forEach(function(s){
+    hubPlayers[s.name]={name:s.name,apps:s.apps,goals:s.goals,motm:0,potm:0,matches:[]};
+  });
+  hubMatches=[];
+
+  // Build from hard-coded match data
+  HUB_MATCHES_RAW.forEach(function(r,i){
+    var detail=r[0],comp=r[1],outcome=r[2],score=r[3];
+    var motmFull=hubResolve(r[4]),potmFull=hubResolve(r[5]);
+    var scorers=hubParseGoals(r[6]);
+    var m={num:i+1,detail:detail,comp:comp,outcome:outcome,score:score,motm:motmFull||r[4],potm:potmFull||r[5],scorers:scorers};
     hubMatches.push(m);
     if(motmFull&&hubPlayers[motmFull]) hubPlayers[motmFull].motm++;
     if(potmFull&&hubPlayers[potmFull]) hubPlayers[potmFull].potm++;
     SQUAD.forEach(function(sq){
       var p=hubPlayers[sq.name];
       var g=scorers.filter(function(s){return s.name===sq.name;}).reduce(function(a,s){return a+s.goals;},0);
-      p.matches.push({num:i,detail:detail,comp:comp,outcome:outcome,score:score,goals:g,isMotm:motmFull===sq.name,isPotm:potmFull===sq.name});
+      p.matches.push({num:i+1,detail:detail,comp:comp,outcome:outcome,score:score,goals:g,isMotm:motmFull===sq.name,isPotm:potmFull===sq.name});
     });
+  });
+}
+
+function renderHubGoalsChart(){
+  var canvas=document.getElementById('hub-goals-canvas');
+  if(!canvas) return;
+  // Build cumulative goals per match from team score
+  var cumulative=[0], total=0;
+  HUB_MATCHES_RAW.forEach(function(r){
+    var parts=r[3].split('-');
+    total+=parseInt(parts[0])||0;
+    cumulative.push(total);
+  });
+  var labels=HUB_MATCHES_RAW.map(function(r,i){return i+1;});
+  var dpr=window.devicePixelRatio||1;
+  var W=canvas.parentElement.clientWidth-36;
+  var H=200;
+  canvas.width=W*dpr; canvas.height=H*dpr;
+  canvas.style.width=W+'px'; canvas.style.height=H+'px';
+  var ctx=canvas.getContext('2d');
+  ctx.scale(dpr,dpr);
+  var pad={top:16,right:16,bottom:36,left:40};
+  var cw=W-pad.left-pad.right, ch=H-pad.top-pad.bottom;
+  var maxV=cumulative[cumulative.length-1]||1;
+  var xStep=cw/(HUB_MATCHES_RAW.length);
+  ctx.clearRect(0,0,W,H);
+  // Grid lines
+  ctx.strokeStyle='#e0e8f0'; ctx.lineWidth=1;
+  for(var g=0;g<=4;g++){
+    var gy=pad.top+ch-(ch*g/4);
+    ctx.beginPath(); ctx.moveTo(pad.left,gy); ctx.lineTo(pad.left+cw,gy); ctx.stroke();
+    ctx.fillStyle='#6b82a0'; ctx.font='10px Barlow,sans-serif'; ctx.textAlign='right';
+    ctx.fillText(Math.round(maxV*g/4),pad.left-6,gy+4);
   }
+  // X axis labels
+  ctx.fillStyle='#6b82a0'; ctx.font='10px Barlow,sans-serif'; ctx.textAlign='center';
+  HUB_MATCHES_RAW.forEach(function(r,i){
+    var x=pad.left+xStep*i+xStep/2;
+    ctx.fillText(i+1,x,H-pad.bottom+14);
+  });
+  ctx.fillStyle='#1a2b3c'; ctx.font='10px Barlow,sans-serif'; ctx.textAlign='center';
+  ctx.fillText('Match',pad.left+cw/2,H-4);
+  // Area fill
+  ctx.beginPath();
+  ctx.moveTo(pad.left,pad.top+ch);
+  HUB_MATCHES_RAW.forEach(function(r,i){
+    var x=pad.left+xStep*i+xStep/2;
+    var y=pad.top+ch-(ch*cumulative[i+1]/maxV);
+    if(i===0) ctx.lineTo(x,y); else ctx.lineTo(x,y);
+  });
+  ctx.lineTo(pad.left+xStep*(HUB_MATCHES_RAW.length-1)+xStep/2,pad.top+ch);
+  ctx.closePath();
+  ctx.fillStyle='rgba(166,200,66,0.18)'; ctx.fill();
+  // Line
+  ctx.beginPath(); ctx.strokeStyle='#A6C842'; ctx.lineWidth=2.5; ctx.lineJoin='round';
+  HUB_MATCHES_RAW.forEach(function(r,i){
+    var x=pad.left+xStep*i+xStep/2;
+    var y=pad.top+ch-(ch*cumulative[i+1]/maxV);
+    if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+  });
+  ctx.stroke();
+  // Dots
+  HUB_MATCHES_RAW.forEach(function(r,i){
+    var x=pad.left+xStep*i+xStep/2;
+    var y=pad.top+ch-(ch*cumulative[i+1]/maxV);
+    ctx.beginPath(); ctx.arc(x,y,3.5,0,Math.PI*2);
+    ctx.fillStyle='#A6C842'; ctx.fill();
+    ctx.strokeStyle='#fff'; ctx.lineWidth=1.5; ctx.stroke();
+    // Value label on dot
+    ctx.fillStyle='#2d3a0e'; ctx.font='bold 9px Barlow,sans-serif'; ctx.textAlign='center';
+    ctx.fillText(cumulative[i+1],x,y-7);
+  });
 }
 
 function renderHubSquad(){
