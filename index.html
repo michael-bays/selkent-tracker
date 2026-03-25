@@ -2015,8 +2015,13 @@ if(oldLanding) oldLanding.style.display='none';
         messages:messages
       })
     });
+    if(!res.ok){
+      var errText=await res.text();
+      throw new Error('API '+res.status+': '+errText);
+    }
     var data=await res.json();
-    var reply=data.content&&data.content[0]?data.content[0].text:'Sorry, I couldn\'t get a response.';
+    if(data.error) throw new Error(data.error.message||JSON.stringify(data.error));
+    var reply=data.content&&data.content[0]?data.content[0].text:'No response content.';
     chatHistory.push({role:'user',content:question});
     chatHistory.push({role:'assistant',content:reply});
     if(chatHistory.length>20) chatHistory=chatHistory.slice(-20);
@@ -2064,7 +2069,7 @@ if(oldLanding) oldLanding.style.display='none';
       addMessage(reply,'assistant');
     }catch(e){
       removeTyping();
-      addMessage('Sorry, something went wrong. Check your connection and try again.','assistant');
+      addMessage('Error: '+e.message,'assistant');
     }
   }
 
