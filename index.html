@@ -1961,6 +1961,11 @@ if(oldLanding) oldLanding.style.display='none';
 // ════════════════════════════════════════════════════════════════════
 (function(){
   var AKEY=typeof ANTHROPIC_KEY!=='undefined'?ANTHROPIC_KEY:'';
+  if(!AKEY){
+    setTimeout(function(){
+      addMessage('⚠️ No API key found. Make sure config.js is in the same folder as index.html and contains your Anthropic key.','assistant');
+    },400);
+  }
   var chatOpen=false, chatHistory=[];
 
   function buildContext(){
