@@ -1959,7 +1959,6 @@ if(oldLanding) oldLanding.style.display='none';
 // AI CHAT WIDGET
 // ════════════════════════════════════════════════════════════════════
 (function(){
-  var AKEY='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';
   var chatHistory=[];
 
   function buildContext(){
@@ -1993,14 +1992,9 @@ if(oldLanding) oldLanding.style.display='none';
 
   async function askAI(question){
     var messages=chatHistory.concat([{role:'user',content:question}]);
-    var res=await fetch('https://api.anthropic.com/v1/messages',{
+    var res=await fetch('https://plain-boat-e091.michaelbays.workers.dev',{
       method:'POST',
-      headers:{
-        'Content-Type':'application/json',
-        'x-api-key':AKEY,
-        'anthropic-version':'2023-06-01',
-        'anthropic-dangerous-direct-browser-access':'true'
-      },
+      headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
         model:'claude-haiku-4-5-20251001',
         max_tokens:400,
