@@ -201,7 +201,6 @@ tbody td.num{text-align:center;color:var(--muted);}
       <polygon points="11,20 14,17 16,19 15,23 12,24" fill="rgba(255,255,255,0.9)"/>
     </svg>
     <div><h1>SELKENT Tracker</h1><p>Under 12D · 9-a-Side · 2025/26 Season</p></div>
-    <button class="logo-manage-btn" id="logo-manage-btn" onclick="openLogoManager()" style="display:none">🖼️ Club Logos</button>
     <button class="home-btn" id="home-btn" onclick="goHome()">🏠 Home</button>
   </div>
   <div class="tab-bar" id="tab-bar" style="display:none;">
@@ -211,24 +210,7 @@ tbody td.num{text-align:center;color:var(--muted);}
   </div>
 </header>
 
-<!-- LOGO MODAL -->
-<div class="modal-overlay" id="logo-modal">
-  <div class="modal">
-    <h3>Club Logo</h3>
-    <div class="modal-sub">Set a logo for <strong id="modal-team-name"></strong></div>
-    <div class="modal-preview" id="modal-preview">⚽</div>
-    <label>Paste a logo URL</label>
-    <input type="text" id="modal-url-input" placeholder="https://example.com/logo.png" oninput="previewLogoUrl()">
-    <div class="modal-or">— or —</div>
-    <label>Upload an image from your device</label>
-    <input type="file" id="modal-file-input" accept="image/*" onchange="previewLogoFile()">
-    <div class="modal-btns">
-      <button class="modal-btn modal-btn-save" onclick="saveLogo()">Save Logo</button>
-      <button class="modal-btn modal-btn-remove" onclick="removeLogo()" id="modal-remove-btn">Remove</button>
-      <button class="modal-btn modal-btn-cancel" onclick="closeLogoManager()">Cancel</button>
-    </div>
-  </div>
-</div>
+
 
 <!-- LEAGUE CONTROLS -->
 <div class="controls" id="league-controls" style="display:none;">
