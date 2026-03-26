@@ -212,7 +212,24 @@ tbody td.num{text-align:center;color:var(--muted);}
 
 
 
-<!-- LEAGUE CONTROLS -->
+<!-- LOGO MODAL -->
+<div class="modal-overlay" id="logo-modal">
+  <div class="modal">
+    <h3>Club Logo</h3>
+    <div class="modal-sub">Set a logo for <strong id="modal-team-name"></strong></div>
+    <div class="modal-preview" id="modal-preview">⚽</div>
+    <label>Paste a logo URL</label>
+    <input type="text" id="modal-url-input" placeholder="https://example.com/logo.png" oninput="previewLogoUrl()">
+    <div class="modal-or">— or —</div>
+    <label>Upload an image from your device</label>
+    <input type="file" id="modal-file-input" accept="image/*" onchange="previewLogoFile()">
+    <div class="modal-btns">
+      <button class="modal-btn modal-btn-save" onclick="saveLogo()">Save Logo</button>
+      <button class="modal-btn modal-btn-remove" onclick="removeLogo()" id="modal-remove-btn">Remove</button>
+      <button class="modal-btn modal-btn-cancel" onclick="closeLogoManager()">Cancel</button>
+    </div>
+  </div>
+</div>
 <div class="controls" id="league-controls" style="display:none;">
   <span class="ctrl-label">Division</span>
   <select id="league-div-select" onchange="onLeagueDivChange()">
@@ -411,7 +428,7 @@ tbody td.num{text-align:center;color:var(--muted);}
   </div>
   <div class="team-dashboard" id="league-team-dashboard">
     <div class="team-hero">
-      <div class="team-initial-wrap" id="l-team-initial" onclick="openLogoManagerForCurrentTeam('league')"></div>
+      <div class="team-initial-wrap" id="l-team-initial"></div>
       <div class="team-hero-info"><h2 id="l-team-title"></h2><div class="sub" id="l-team-sub"></div></div>
       <div class="position-badge"><div class="pos-num" id="l-team-position">—</div><div class="pos-label">League Pos</div></div>
     </div>
@@ -453,7 +470,7 @@ tbody td.num{text-align:center;color:var(--muted);}
   </div>
   <div class="team-dashboard" id="shield-team-dashboard">
     <div class="team-hero">
-      <div class="team-initial-wrap" id="s-team-initial" onclick="openLogoManagerForCurrentTeam('shield')"></div>
+      <div class="team-initial-wrap" id="s-team-initial"></div>
       <div class="team-hero-info"><h2 id="s-team-title"></h2><div class="sub" id="s-team-sub"></div></div>
       <div class="position-badge"><div class="pos-num" id="s-team-position">—</div><div class="pos-label">Shield Pos</div></div>
     </div>
