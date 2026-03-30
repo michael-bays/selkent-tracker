@@ -224,6 +224,7 @@ tbody td.num{text-align:center;color:var(--muted);}
     <button class="tab-btn active-league" id="tab-league" onclick="switchTab('league')">⚽ League</button>
     <button class="tab-btn" id="tab-shield" onclick="switchTab('shield')">🛡️ Selkent Shield</button>
     <button class="tab-btn" id="tab-cup" onclick="switchTab('cup')">🏆 Selkent Cup</button>
+    <button class="tab-btn" id="tab-friendly" onclick="switchTab('friendly')">🤝 Friendlies</button>
   </div>
 </header>
 
@@ -341,6 +342,11 @@ tbody td.num{text-align:center;color:var(--muted);}
     </div>
     <!-- Next Fixture -->
     <div id="hub-next-fixture" style="margin-bottom:24px;"></div>
+    <!-- Recent Results -->
+    <div id="hub-recent-results-wrap" style="background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:24px;">
+      <div style="padding:12px 16px;background:var(--surface2);border-bottom:1px solid var(--border);font-family:'Oswald',sans-serif;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);">📋 <span style="color:var(--text);">Last 5 Results</span></div>
+      <div id="hub-recent-results"></div>
+    </div>
     <!-- Top Scorers -->
     <div id="hub-top-scorers-wrap" style="background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;margin-bottom:24px;">
       <div style="padding:12px 16px;background:var(--surface2);border-bottom:1px solid var(--border);font-family:'Oswald',sans-serif;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);">⚽ <span style="color:var(--text);">Top Scorers</span></div>
@@ -578,6 +584,15 @@ tbody td.num{text-align:center;color:var(--muted);}
   </div>
 </main></div>
 
+<!-- ═══ FRIENDLY SECTION ═══ -->
+<div id="friendly-section" style="display:none;"><main style="max-width:900px;margin:0 auto;padding:24px 16px;">
+  <div style="text-align:center;padding:48px 24px;color:var(--muted);">
+    <div style="font-size:48px;margin-bottom:16px;">🤝</div>
+    <div style="font-family:'Oswald',sans-serif;font-weight:700;font-size:20px;color:var(--text);margin-bottom:8px;">Friendlies</div>
+    <div style="font-size:14px;line-height:1.6;">No friendly results yet this season.<br>Results will appear here when available.</div>
+  </div>
+</main></div>
+
 <!-- ═══ HOME SEARCH (landing page search bar) ═══ -->
 <div id="home-search-wrap" style="display:none;width:100%;max-width:480px;margin-bottom:32px;position:relative;">
   <input type="text" id="home-search" placeholder="🔍  Search any team…" autocomplete="off"
@@ -594,7 +609,7 @@ function enterMasterSection(s){
   if(s==='team'){
     document.getElementById('selkent-header').style.display='none';
     document.getElementById('team-hub-section').style.display='block';
-    ['league-section','shield-section','cup-section','league-controls','shield-controls','tab-bar','home-btn','logo-manage-btn','combined-page'].forEach(function(id){
+    ['league-section','shield-section','cup-section','friendly-section','league-controls','shield-controls','tab-bar','home-btn','logo-manage-btn','combined-page'].forEach(function(id){
       var el=document.getElementById(id); if(el) el.style.display='none';
     });
     if(Object.keys(hubPlayers).length===0) initHubPlayers();
@@ -614,7 +629,7 @@ function goHome(){ goMasterHome(); }
 function goMasterHome(){
   document.getElementById('master-landing').style.display='flex';
   document.getElementById('selkent-header').style.display='none';
-  ['team-hub-section','combined-page','league-section','shield-section','cup-section','league-controls','shield-controls','combined-page'].forEach(function(id){
+  ['team-hub-section','combined-page','league-section','shield-section','cup-section','friendly-section','league-controls','shield-controls','combined-page'].forEach(function(id){
     var el=document.getElementById(id); if(el) el.style.display='none';
   });
   var tb=document.getElementById('tab-bar'); if(tb) tb.style.display='none';
@@ -1308,6 +1323,7 @@ function renderHubSquad(){
   ].map(function(c){return '<div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center;"><div style="font-family:\'Oswald\',sans-serif;font-weight:900;font-size:26px;line-height:1;color:'+c.col+';">'+c.val+'</div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px;">'+c.lbl+'</div></div>';}).join('');
   renderHubTable();
   renderNextFixture();
+  renderRecentResults();
   renderTopScorers();
   setTimeout(renderHubGoalsChart, 50);
 }
@@ -1409,11 +1425,13 @@ function _switchTab(t){
   document.getElementById('league-section').style.display=t==='league'?'block':'none';
   document.getElementById('shield-section').style.display=t==='shield'?'block':'none';
   document.getElementById('cup-section').style.display=t==='cup'?'block':'none';
+  document.getElementById('friendly-section').style.display=t==='friendly'?'block':'none';
   document.getElementById('league-controls').style.display=t==='league'?'flex':'none';
   document.getElementById('shield-controls').style.display=t==='shield'?'flex':'none';
   document.getElementById('tab-league').className='tab-btn'+(t==='league'?' active-league':'');
   document.getElementById('tab-shield').className='tab-btn'+(t==='shield'?' active-shield':'');
   document.getElementById('tab-cup').className='tab-btn'+(t==='cup'?' active-cup':'');
+  document.getElementById('tab-friendly').className='tab-btn'+(t==='friendly'?' active-league':'');
   if(t==='cup') renderCupSection();
 }
 
@@ -1666,7 +1684,7 @@ function showCombinedProfile(teamName){
   document.getElementById('master-landing').style.display='none';
   document.getElementById('combined-page').style.display='block';
   document.getElementById('selkent-header').style.display='block';
-  ['league-section','shield-section','cup-section','league-controls','shield-controls','team-hub-section'].forEach(function(id){document.getElementById(id).style.display='none';});
+  ['league-section','shield-section','cup-section','friendly-section','league-controls','shield-controls','team-hub-section'].forEach(function(id){document.getElementById(id).style.display='none';});
   document.getElementById('tab-bar').style.display='none';
   document.getElementById('home-btn').style.display='none';
   document.getElementById('logo-manage-btn').style.display='none';
@@ -1864,6 +1882,24 @@ var NEXT_FIXTURE={
   venue:'',
   comp:'',
 };
+
+function renderRecentResults(){
+  var el=document.getElementById('hub-recent-results');
+  if(!el) return;
+  var last5=HUB_MATCHES_RAW.slice(-5).reverse();
+  var compIcons={League:'⚽',Shield:'🛡️',Cup:'🏆',Friendly:'🤝'};
+  el.innerHTML=last5.map(function(r){
+    var outcome=r[2],score=r[3],detail=r[0],comp=r[1];
+    var bg=outcome==='W'?'#1a7a3c':outcome==='D'?'#d68910':'#c0392b';
+    var icon=compIcons[comp]||'⚽';
+    return'<div style="display:flex;align-items:center;padding:10px 16px;border-bottom:1px solid var(--border);gap:12px;font-size:13px;">'
+      +'<div style="background:'+bg+';color:#fff;font-family:\'Oswald\',sans-serif;font-weight:800;font-size:15px;width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">'+outcome+'</div>'
+      +'<div style="flex:1;color:var(--text);">'+detail+'</div>'
+      +'<div style="color:var(--muted);font-size:12px;white-space:nowrap;">'+icon+' '+comp+'</div>'
+      +'<div style="font-family:\'Oswald\',sans-serif;font-weight:700;font-size:15px;color:var(--text);min-width:36px;text-align:right;">'+score+'</div>'
+      +'</div>';
+  }).join('');
+}
 
 function renderNextFixture(){
   var el=document.getElementById('hub-next-fixture');
