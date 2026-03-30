@@ -38,8 +38,9 @@ body{background:var(--bg);color:var(--text);font-family:'Roboto Condensed',sans-
 .header-top{display:flex;align-items:center;gap:14px;margin-bottom:16px;}
 #selkent-header h1{font-family:'Oswald',sans-serif;font-weight:900;font-size:26px;letter-spacing:1px;color:#fff;line-height:1;}
 #selkent-header p{font-size:13px;color:rgba(255,255,255,.6);margin-top:3px;}
-.tab-bar{display:flex;}
-.tab-btn{padding:12px 28px;font-family:'Oswald',sans-serif;font-weight:700;font-size:15px;letter-spacing:1px;text-transform:uppercase;border:none;background:transparent;color:rgba(255,255,255,.55);cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;position:relative;top:1px;}
+.tab-bar{display:flex;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.tab-bar::-webkit-scrollbar{display:none;}
+.tab-btn{padding:12px 28px;font-family:'Oswald',sans-serif;font-weight:700;font-size:15px;letter-spacing:1px;text-transform:uppercase;border:none;background:transparent;color:rgba(255,255,255,.55);cursor:pointer;border-bottom:3px solid transparent;transition:all .2s;position:relative;top:1px;white-space:nowrap;flex-shrink:0;}
 .tab-btn.active-league{color:#fff;border-bottom-color:#fff;}
 .tab-btn.active-shield{color:#fff;border-bottom-color:rgba(255,255,255,.8);}
 .tab-btn.active-cup{color:#f0c040;border-bottom-color:#f0c040;}
