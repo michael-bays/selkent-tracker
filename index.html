@@ -2159,12 +2159,8 @@ function toggleDarkMode(){
   applyTheme(cur==='dark'?'light':'dark');
 }
 function updateIconTheme(theme){
-  var isDark=theme==='dark'||(theme!=='light'&&getSystemDark());
-  var bg=isDark?'%230f1923':'%232d3a0e';
-  var ring=isDark?'%234da6e8':'%23A6C842';
-  var svg="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='36' fill='"+bg+"'/%3E%3Ccircle cx='90' cy='90' r='55' fill='none' stroke='"+ring+"' stroke-width='6'/%3E%3Ccircle cx='90' cy='90' r='46' fill='"+ring+"'/%3E%3C/svg%3E";
-  var links=document.querySelectorAll('link[rel="apple-touch-icon"],link[rel="icon"]');
-  links.forEach(function(l){l.setAttribute('href',svg);});
+  // iOS home screen icons are cached at save time and can't be changed dynamically.
+  // We keep the embedded PNG badge as the icon at all times.
 }
 // Initialise on load
 (function(){
@@ -2179,10 +2175,7 @@ function updateIconTheme(theme){
   }
   window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',function(e){
     if(!localStorage.getItem('selkent_theme')){
-      var icon=e.matches?'☀️':'🌙';
-      var b1=document.getElementById('dark-mode-btn'); if(b1) b1.textContent=icon;
-      var b2=document.getElementById('master-dark-btn'); if(b2) b2.textContent=icon;
-      var b3=document.getElementById('hub-dark-btn'); if(b3) b3.textContent=icon;
+      applyTheme(e.matches?'dark':'light');
     }
   });
 })();
