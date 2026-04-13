@@ -334,6 +334,7 @@ tbody td.num{text-align:center;color:var(--muted);}
     <button onclick="goHome()" style="margin-left:auto;background:rgba(0,0,0,.12);border:1.5px solid rgba(0,0,0,.2);border-radius:8px;color:var(--club-text);padding:7px 12px;font-family:'Oswald',sans-serif;font-weight:700;font-size:13px;cursor:pointer;">🏠 Home</button>
     <button onclick="toggleDarkMode()" id="hub-dark-btn" style="background:rgba(0,0,0,.12);border:1.5px solid rgba(0,0,0,.2);border-radius:8px;color:var(--club-text);padding:7px 12px;font-size:13px;cursor:pointer;">🌙</button>
     <button onclick="showSquad()" id="hub-back-btn" style="display:none;background:rgba(0,0,0,.12);border:1.5px solid rgba(0,0,0,.2);border-radius:8px;color:var(--club-text);padding:7px 12px;font-family:'Oswald',sans-serif;font-weight:700;font-size:13px;cursor:pointer;">← Squad</button>
+    <button onclick="exportWidgetData()" id="hub-export-btn" title="Copy widget data to clipboard" style="background:rgba(0,0,0,.12);border:1.5px solid rgba(0,0,0,.2);border-radius:8px;color:var(--club-text);padding:7px 12px;font-size:13px;cursor:pointer;">📲</button>
   </div>
   <div style="padding:24px;max-width:1000px;margin:0 auto;">
     <!-- Goals over time chart -->
@@ -2194,6 +2195,45 @@ if(hubDz){
   hubDz.addEventListener('dragover',function(e){e.preventDefault();hubDz.style.borderColor='#A6C842';});
   hubDz.addEventListener('dragleave',function(){hubDz.style.borderColor='var(--border)';});
   hubDz.addEventListener('drop',function(e){e.preventDefault();hubDz.style.borderColor='var(--border)';handleHubFile(e.dataTransfer.files[0]);});
+}
+
+// ── Widget Data Export ────────────────────────────────────────────────────────
+function exportWidgetData(){
+  var last=HUB_MATCHES_RAW[HUB_MATCHES_RAW.length-1];
+  var lastOpp=last[0].replace(/^vs\s*/i,'').replace(/\s*[\(\[].*[\)\]]$/,'').trim();
+  var scoreParts=last[3].split('-');
+  var scoreFormatted=(scoreParts[0]||'?').trim()+' – '+(scoreParts[1]||'?').trim();
+  var navyTable=LEAGUE_TABLES['Navy']||[];
+  var dukesRow=navyTable.filter(function(t){return t.name.toLowerCase().indexOf('green court dukes')>-1;})[0];
+  initHubPlayers();
+  var pl=Object.values(hubPlayers).sort(function(a,b){return b.goals-a.goals;});
+  var top=pl[0]||{name:'—',goals:0};
+  var second=pl[1]||null;
+  var joint=second&&second.goals===top.goals;
+  function shortName(n){var p=n.split(' ');return p.length>1?p[0][0]+'. '+p.slice(1).join(' '):n;}
+  var nf=NEXT_FIXTURE;
+  var data={
+    lastResult:{opponent:lastOpp,competition:last[1],score:scoreFormatted,outcome:last[2],date:last[7]||''},
+    nextFixture:{opponent:nf.opp||'TBC',competition:nf.comp||'League',venue:nf.venue==='H'?'Home':nf.venue==='A'?'Away':'Home',date:nf.date||'TBC'},
+    league:{position:dukesRow?dukesRow.position:0,total:navyTable.length,points:dukesRow?dukesRow.Pts:0,division:'Navy'},
+    topScorer:{name:top.name,goals:top.goals,joint:joint,jointName:joint?shortName(second.name):'',jointGoals:joint?second.goals:0}
+  };
+  var js='// ─── AUTO-GENERATED — paste this DATA block into DukesWidget.js ───\nconst DATA = '+JSON.stringify(data,null,2)+';\n// ────────────────────────────────────────────────────────────────────';
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(js).then(function(){
+      showExportToast('✅ Widget data copied to clipboard!');
+    }).catch(function(){showExportFallback(js);});
+  } else {showExportFallback(js);}
+}
+function showExportToast(msg){
+  var t=document.getElementById('export-toast');
+  if(!t){t=document.createElement('div');t.id='export-toast';t.style.cssText='position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a2e0e;color:#A6C842;font-family:Oswald,sans-serif;font-weight:700;font-size:14px;padding:12px 24px;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.3);z-index:9999;transition:opacity .4s;';document.body.appendChild(t);}
+  t.textContent=msg;t.style.opacity='1';clearTimeout(t._timer);t._timer=setTimeout(function(){t.style.opacity='0';},3000);
+}
+function showExportFallback(js){
+  var w=window.open('','_blank','width=600,height=400');
+  w.document.write('<pre style="font-family:monospace;font-size:13px;padding:20px;white-space:pre-wrap;">'+js.replace(/</g,'&lt;')+'</pre>');
+  w.document.title='Widget Data — copy this';
 }
 </script>
 </body>
