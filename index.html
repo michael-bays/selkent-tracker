@@ -1010,7 +1010,7 @@ Sage:[
   ["15/03/26","London Legends Blue",2,6,"Vikings FC Blue"],
 ],
 Silver:[
-  ["21/09/25","Bermondsey Utd FC",11,1,"Dulwich Hamlet JFC Pink"],
+  ["21/09/25","Bermondsey Utd FC",11,1,"Dulwich Hamlet JFC Pink",["03/05/26","L.I.C. FC",2,0,"Hillyfielders Falcons"]],
   ["21/09/25","Braves Sporting Club",1,6,"Lewisham Borough Vipers"],
   ["21/09/25","Dulwich United Yellow",1,2,"Ballers SE Yellow"],
   ["21/09/25","Dulwich Village Red",6,0,"Hillyfielders Falcons"],
@@ -1101,7 +1101,7 @@ Silver:[
 var SHIELD_TEAMS={
   Sage:["AFC Green Court Knights","Dulwich Village Red","Lewisham Borough Vipers","Punjab United","S.E. Lions FC","Vikings FC Blue"],
   Apricot:["Abbeymead FC","Baldon Sports Falcons","Baldon Sports Hawks","Ballers SE Yellow","Blackheath Village Blue","Crayford Arrows Black","Hayden Youth Panthers"],
-  Maroon:["AFC Green Court Dukes","Cray Valley (PM) FC Black","EWD Eagles Youth","Junior Reds Sabres","L.I.C. FC","S.E. Eagles FC Gold","Sutton Dynamo FC"],
+  Maroon:["AFC Green Court Dukes","EWD Eagles Youth","Junior Reds Sabres","L.I.C. FC","S.E. Eagles FC Gold","Sutton Dynamo FC"],
   Purple:["Eversley Rangers","Foots Cray Lions","Junior Reds Spartans","Lewisham Project White","TDA Football Club Titans","Total FC"],
   Navy:["Athenlay Rye","Bermondsey Utd FC","New Ash Green JFC Pumas","Northumberland Heath","ST Sports FC Girls Sabres","Vikings FC Red"],
   Lime:["Beacons White","Chislehurst Wanderers Tigers","Danson Sports Yellow","KSI Coaching FC Navy","Shooters Hill AFC Green","Slade Green Knights Greens"],
@@ -1109,34 +1109,34 @@ var SHIELD_TEAMS={
   Brown:["Braves Sporting Club","Castle Hill United FC","Dartford Royals White","Guru Nanak Youth","Hillyfielders Falcons","Teviot Rangers Yellow"],
 };
 var SHIELD_RAW={
-  Sage:[["Rd1","Lewisham Borough Vipers",4,3,"Vikings FC Blue"],["Rd2","AFC Green Court Knights",2,4,"S.E. Lions FC"],["Rd2","Punjab United",0,3,"Lewisham Borough Vipers"],["Rd3","Dulwich Village Red",1,3,"S.E. Lions FC"],["Rd3","Vikings FC Blue",2,2,"Punjab United"],["Rd4","AFC Green Court Knights",1,1,"Punjab United"],["Rd4","Vikings FC Blue",2,1,"S.E. Lions FC"],],
-  Apricot:[["Rd1","Blackheath Village Blue",1,1,"Abbeymead FC"],["Rd1","Crayford Arrows Black",1,6,"Baldon Sports Falcons"],["Rd2","Abbeymead FC",1,1,"Crayford Arrows Black"],["Rd2","Baldon Sports Falcons",2,1,"Baldon Sports Hawks"],["Rd3","Baldon Sports Hawks",3,1,"Abbeymead FC"],["Rd3","Ballers SE Yellow",4,4,"Baldon Sports Falcons"],["Rd4","Baldon Sports Falcons",1,4,"Blackheath Village Blue"],["Rd4","Crayford Arrows Black",2,3,"Ballers SE Yellow"],["Rd4","Hayden Youth Panthers",2,1,"Baldon Sports Hawks"],],
-  Maroon:[["Rd1","AFC Green Court Dukes",3,2,"Cray Valley (PM) FC Black"],["Rd1","Sutton Dynamo FC",4,0,"Junior Reds Sabres"],["Rd2","EWD Eagles Youth",5,1,"AFC Green Court Dukes"],["Rd3","AFC Green Court Dukes",2,2,"L.I.C. FC"],["Rd3","EWD Eagles Youth",9,1,"Junior Reds Sabres"],["Rd3","S.E. Eagles FC Gold",1,2,"Sutton Dynamo FC"],["Rd4","L.I.C. FC",2,2,"EWD Eagles Youth"],["Rd4","Sutton Dynamo FC",2,3,"AFC Green Court Dukes"],["Rd5","AFC Green Court Dukes",4,4,"S.E. Eagles FC Gold"],],
-  Purple:[["Rd1","Eversley Rangers",0,2,"Foots Cray Lions"],["Rd1","Junior Reds Spartans",2,4,"Lewisham Project White"],["Rd2","Lewisham Project White",2,1,"Eversley Rangers"],["Rd2","TDA Football Club Titans",5,0,"Junior Reds Spartans"],["Rd3","Eversley Rangers",4,0,"Junior Reds Spartans"],["Rd3","TDA Football Club Titans",3,2,"Lewisham Project White"],["Rd4","Foots Cray Lions",1,6,"TDA Football Club Titans"],],
-  Navy:[["Rd1","Athenlay Rye",6,0,"Vikings FC Red"],["Rd1","Northumberland Heath",3,3,"New Ash Green JFC Pumas"],["Rd2","Bermondsey Utd FC",1,3,"Athenlay Rye"],["Rd2","New Ash Green JFC Pumas",2,0,"ST Sports FC Girls Sabres"],["Rd2","Vikings FC Red",2,1,"Northumberland Heath"],["Rd3","ST Sports FC Girls Sabres",2,0,"Northumberland Heath"],["Rd4","Athenlay Rye",4,0,"ST Sports FC Girls Sabres"],["Rd4","Northumberland Heath",2,7,"Bermondsey Utd FC"],["Rd4","Vikings FC Red",1,4,"New Ash Green JFC Pumas"],],
-  Lime:[["Rd1","Beacons White",4,2,"Danson Sports Yellow"],["Rd2","Danson Sports Yellow",4,0,"Chislehurst Wanderers Tigers"],["Rd2","Shooters Hill AFC Green",2,5,"KSI Coaching FC Navy"],["Rd2","Slade Green Knights Greens",1,2,"Beacons White"],["Rd3","Beacons White",1,6,"Shooters Hill AFC Green"],["Rd3","Chislehurst Wanderers Tigers",8,1,"Slade Green Knights Greens"],["Rd3","KSI Coaching FC Navy",2,1,"Danson Sports Yellow"],["Rd4","Chislehurst Wanderers Tigers",1,5,"Beacons White"],["Rd4","Danson Sports Yellow",1,2,"Shooters Hill AFC Green"],["Rd4","Slade Green Knights Greens",0,3,"KSI Coaching FC Navy"],],
-  Aqua:[["Rd1","Blackheath Rhinos Grey",1,4,"Dulwich Hamlet JFC Pink"],["Rd1","Dartford Royals Yellow",3,2,"Danson Sports Purple"],["Rd1","Greenwich Peninsula Pumas",0,2,"Junior Reds Titans"],["Rd2","Danson Sports Purple",4,0,"Greenwich Peninsula Pumas"],["Rd2","Dulwich Hamlet JFC Pink",4,2,"Swanley Rangers White"],["Rd2","Junior Reds Titans",2,1,"Blackheath Rhinos Grey"],["Rd3","Blackheath Rhinos Grey",4,4,"Dartford Royals Yellow"],["Rd3","Greenwich Peninsula Pumas",0,3,"Dulwich Hamlet JFC Pink"],["Rd3","Swanley Rangers White",0,1,"Junior Reds Titans"],["Rd4","Dulwich Hamlet JFC Pink",7,0,"Danson Sports Purple"],["Rd4","Junior Reds Titans",2,4,"Dartford Royals Yellow"],["Rd4","Swanley Rangers White",5,0,"Blackheath Rhinos Grey"],],
-  Brown:[["Rd1","Hillyfielders Falcons",0,1,"Braves Sporting Club"],["Rd1","Teviot Rangers Yellow",3,8,"Castle Hill United FC"],["Rd2","Braves Sporting Club",3,1,"Teviot Rangers Yellow"],["Rd2","Castle Hill United FC",1,0,"Dartford Royals White"],["Rd2","Guru Nanak Youth",1,5,"Hillyfielders Falcons"],["Rd3","Dartford Royals White",3,0,"Guru Nanak Youth"],["Rd3","Hillyfielders Falcons",10,2,"Teviot Rangers Yellow"],["Rd4","Braves Sporting Club",1,1,"Dartford Royals White"],["Rd4","Castle Hill United FC",2,3,"Hillyfielders Falcons"],["Rd4","Teviot Rangers Yellow",3,1,"Guru Nanak Youth"],],
+  Sage:[["Rd1","Lewisham Borough Vipers",4,3,"Vikings FC Blue"],["Rd2","AFC Green Court Knights",2,4,"S.E. Lions FC"],["Rd2","Punjab United",0,3,"Lewisham Borough Vipers"],["Rd3","Dulwich Village Red",1,3,"S.E. Lions FC"],["Rd3","Vikings FC Blue",2,2,"Punjab United"],["Rd4","AFC Green Court Knights",1,1,"Punjab United"],["Rd4","Vikings FC Blue",2,1,"S.E. Lions FC"],["25/04/26","S.E. Lions FC",9,1,"Punjab United"],["26/04/26","Vikings FC Blue",0,2,"AFC Green Court Knights"],["26/04/26","Lewisham Borough Vipers",1,1,"Dulwich Village Red"],["29/04/26","Dulwich Village Red",0,3,"Vikings FC Blue"],["02/05/26","Lewisham Borough Vipers",3,2,"AFC Green Court Knights"],["02/05/26","Punjab United",4,4,"Dulwich Village Red"],["03/05/26","Dulwich Village Red",5,0,"AFC Green Court Knights"],["03/05/26","S.E. Lions FC",3,2,"Lewisham Borough Vipers"]],
+  Apricot:[["Rd1","Blackheath Village Blue",1,1,"Abbeymead FC"],["Rd1","Crayford Arrows Black",1,6,"Baldon Sports Falcons"],["Rd2","Abbeymead FC",1,1,"Crayford Arrows Black"],["Rd2","Baldon Sports Falcons",2,1,"Baldon Sports Hawks"],["Rd3","Baldon Sports Hawks",3,1,"Abbeymead FC"],["Rd3","Ballers SE Yellow",4,4,"Baldon Sports Falcons"],["Rd4","Baldon Sports Falcons",1,4,"Blackheath Village Blue"],["Rd4","Crayford Arrows Black",2,3,"Ballers SE Yellow"],["Rd4","Hayden Youth Panthers",2,1,"Baldon Sports Hawks"],["19/04/26","Baldon Sports Falcons",1,4,"Blackheath Village Blue"],["19/04/26","Crayford Arrows Black",2,3,"Ballers SE Yellow"],["19/04/26","Hayden Youth Panthers",2,1,"Baldon Sports Hawks"],["25/04/26","Blackheath Village Blue",2,3,"Baldon Sports Hawks"],["25/04/26","Hayden Youth Panthers",1,1,"Ballers SE Yellow"],["26/04/26","Baldon Sports Hawks",1,0,"Crayford Arrows Black"],["26/04/26","Blackheath Village Blue",2,7,"Ballers SE Yellow"],["26/04/26","Hayden Youth Panthers",0,0,"Abbeymead FC"],["28/04/26","Abbeymead FC",2,4,"Baldon Sports Falcons"],["28/04/26","Crayford Arrows Black",3,4,"Hayden Youth Panthers"],["02/05/26","Baldon Sports Hawks",3,2,"Ballers SE Yellow"],["02/05/26","Hayden Youth Panthers",6,2,"Blackheath Village Blue"],["03/05/26","Ballers SE Yellow",3,0,"Abbeymead FC"],["03/05/26","Crayford Arrows Black",1,3,"Blackheath Village Blue"],["03/05/26","Hayden Youth Panthers",1,2,"Baldon Sports Falcons"]],
+  Maroon:[["Rd1","Sutton Dynamo FC",4,0,"Junior Reds Sabres"],["Rd2","EWD Eagles Youth",5,1,"AFC Green Court Dukes"],["Rd3","AFC Green Court Dukes",2,2,"L.I.C. FC"],["Rd3","EWD Eagles Youth",9,1,"Junior Reds Sabres"],["Rd3","S.E. Eagles FC Gold",1,2,"Sutton Dynamo FC"],["Rd4","L.I.C. FC",2,2,"EWD Eagles Youth"],["Rd4","Sutton Dynamo FC",2,3,"AFC Green Court Dukes"],["Rd5","AFC Green Court Dukes",4,4,"S.E. Eagles FC Gold"],["26/04/26","Junior Reds Sabres",4,9,"AFC Green Court Dukes"],["26/04/26","S.E. Eagles FC Gold",0,4,"L.I.C. FC"],["27/04/26","S.E. Eagles FC Gold",2,5,"EWD Eagles Youth"],["02/05/26","Junior Reds Sabres",1,3,"L.I.C. FC"],["03/05/26","EWD Eagles Youth",3,0,"Sutton Dynamo FC"],["03/05/26","Junior Reds Sabres",0,0,"S.E. Eagles FC Gold"]],
+  Purple:[["Rd1","Eversley Rangers",0,2,"Foots Cray Lions"],["Rd1","Junior Reds Spartans",2,4,"Lewisham Project White"],["Rd2","Lewisham Project White",2,1,"Eversley Rangers"],["Rd2","TDA Football Club Titans",5,0,"Junior Reds Spartans"],["Rd3","Eversley Rangers",4,0,"Junior Reds Spartans"],["Rd3","TDA Football Club Titans",3,2,"Lewisham Project White"],["Rd4","Foots Cray Lions",1,6,"TDA Football Club Titans"],["19/04/26","Foots Cray Lions",1,6,"TDA Football Club Titans"],["26/04/26","Foots Cray Lions",2,4,"Lewisham Project White"],["26/04/26","TDA Football Club Titans",0,4,"Total FC"],["29/04/26","Total FC",3,0,"Eversley Rangers"],["02/05/26","Total FC",7,1,"Junior Reds Spartans"],["03/05/26","Junior Reds Spartans",0,6,"Foots Cray Lions"],["03/05/26","Lewisham Project White",1,1,"Total FC"],["03/05/26","TDA Football Club Titans",3,3,"Eversley Rangers"]],
+  Navy:[["Rd1","Athenlay Rye",6,0,"Vikings FC Red"],["Rd1","Northumberland Heath",3,3,"New Ash Green JFC Pumas"],["Rd2","Bermondsey Utd FC",1,3,"Athenlay Rye"],["Rd2","New Ash Green JFC Pumas",2,0,"ST Sports FC Girls Sabres"],["Rd2","Vikings FC Red",2,1,"Northumberland Heath"],["Rd3","ST Sports FC Girls Sabres",2,0,"Northumberland Heath"],["Rd4","Athenlay Rye",4,0,"ST Sports FC Girls Sabres"],["Rd4","Northumberland Heath",2,7,"Bermondsey Utd FC"],["Rd4","Vikings FC Red",1,4,"New Ash Green JFC Pumas"],["12/04/26","Bermondsey Utd FC",7,1,"Vikings FC Red"],["12/04/26","ST Sports FC Girls Sabres",2,0,"Northumberland Heath"],["19/04/26","Athenlay Rye",4,0,"ST Sports FC Girls Sabres"],["19/04/26","Northumberland Heath",2,7,"Bermondsey Utd FC"],["19/04/26","Vikings FC Red",1,4,"New Ash Green JFC Pumas"],["26/04/26","Bermondsey Utd FC",3,0,"New Ash Green JFC Pumas"],["26/04/26","Northumberland Heath",3,9,"Athenlay Rye"],["26/04/26","ST Sports FC Girls Sabres",2,4,"Vikings FC Red"],["03/05/26","New Ash Green JFC Pumas",3,2,"Athenlay Rye"],["03/05/26","ST Sports FC Girls Sabres",0,3,"Bermondsey Utd FC"]],
+  Lime:[["Rd1","Beacons White",4,2,"Danson Sports Yellow"],["Rd2","Danson Sports Yellow",4,0,"Chislehurst Wanderers Tigers"],["Rd2","Shooters Hill AFC Green",2,5,"KSI Coaching FC Navy"],["Rd2","Slade Green Knights Greens",1,2,"Beacons White"],["Rd3","Beacons White",1,6,"Shooters Hill AFC Green"],["Rd3","Chislehurst Wanderers Tigers",8,1,"Slade Green Knights Greens"],["Rd3","KSI Coaching FC Navy",2,1,"Danson Sports Yellow"],["Rd4","Chislehurst Wanderers Tigers",1,5,"Beacons White"],["Rd4","Danson Sports Yellow",1,2,"Shooters Hill AFC Green"],["Rd4","Slade Green Knights Greens",0,3,"KSI Coaching FC Navy"],["26/04/26","Danson Sports Yellow",2,1,"Slade Green Knights Greens"],["26/04/26","KSI Coaching FC Navy",3,0,"Beacons White"],["26/04/26","Shooters Hill AFC Green",2,0,"Chislehurst Wanderers Tigers"],["03/05/26","Chislehurst Wanderers Tigers",1,2,"KSI Coaching FC Navy"],["03/05/26","Slade Green Knights Greens",0,3,"Shooters Hill AFC Green"]],
+  Aqua:[["Rd1","Blackheath Rhinos Grey",1,4,"Dulwich Hamlet JFC Pink"],["Rd1","Dartford Royals Yellow",3,2,"Danson Sports Purple"],["Rd1","Greenwich Peninsula Pumas",0,2,"Junior Reds Titans"],["Rd2","Danson Sports Purple",4,0,"Greenwich Peninsula Pumas"],["Rd2","Dulwich Hamlet JFC Pink",4,2,"Swanley Rangers White"],["Rd2","Junior Reds Titans",2,1,"Blackheath Rhinos Grey"],["Rd3","Blackheath Rhinos Grey",4,4,"Dartford Royals Yellow"],["Rd3","Greenwich Peninsula Pumas",0,3,"Dulwich Hamlet JFC Pink"],["Rd3","Swanley Rangers White",0,1,"Junior Reds Titans"],["Rd4","Dulwich Hamlet JFC Pink",7,0,"Danson Sports Purple"],["Rd4","Junior Reds Titans",2,4,"Dartford Royals Yellow"],["Rd4","Swanley Rangers White",5,0,"Blackheath Rhinos Grey"],["25/04/26","Dartford Royals Yellow",3,1,"Swanley Rangers White"],["26/04/26","Danson Sports Purple",0,1,"Junior Reds Titans"],["26/04/26","Dartford Royals Yellow",0,4,"Dulwich Hamlet JFC Pink"],["26/04/26","Swanley Rangers White",3,0,"Greenwich Peninsula Pumas"],["30/04/26","Blackheath Rhinos Grey",2,0,"Greenwich Peninsula Pumas"],["02/05/26","Danson Sports Purple",3,0,"Blackheath Rhinos Grey"],["03/05/26","Danson Sports Purple",5,1,"Swanley Rangers White"],["03/05/26","Dartford Royals Yellow",3,3,"Greenwich Peninsula Pumas"],["03/05/26","Dulwich Hamlet JFC Pink",1,2,"Junior Reds Titans"]],
+  Brown:[["Rd1","Hillyfielders Falcons",0,1,"Braves Sporting Club"],["Rd1","Teviot Rangers Yellow",3,8,"Castle Hill United FC"],["Rd2","Braves Sporting Club",3,1,"Teviot Rangers Yellow"],["Rd2","Castle Hill United FC",1,0,"Dartford Royals White"],["Rd2","Guru Nanak Youth",1,5,"Hillyfielders Falcons"],["Rd3","Dartford Royals White",3,0,"Guru Nanak Youth"],["Rd3","Hillyfielders Falcons",10,2,"Teviot Rangers Yellow"],["Rd4","Braves Sporting Club",1,1,"Dartford Royals White"],["Rd4","Castle Hill United FC",2,3,"Hillyfielders Falcons"],["Rd4","Teviot Rangers Yellow",3,1,"Guru Nanak Youth"],["26/04/26","Braves Sporting Club",0,1,"Castle Hill United FC"],["26/04/26","Hillyfielders Falcons",4,3,"Dartford Royals White"],["03/05/26","Dartford Royals White",4,2,"Teviot Rangers Yellow"]],
 };
 
 // ════════════════════════════════════════════════════════════════════
 // TEAM HUB DATA
 // ════════════════════════════════════════════════════════════════════
 var SQUAD=[
-  {name:'Aleckie Arthur',        apps:23,goals:21},
-  {name:'Christopher Barnes',    apps:23,goals:0},
-  {name:'Aidan Bays',            apps:22,goals:5},
-  {name:'Teddy Booker',          apps:22,goals:0},
-  {name:'Archie Brackell',       apps:19,goals:1},
-  {name:'Jax Colasanto',         apps:7, goals:3},
-  {name:'Jamie Hope',            apps:18,goals:0},
-  {name:'Daniel Kingsley-Lavoe', apps:18,goals:21},
-  {name:'Oliver Lee-Healey',     apps:22,goals:1},
-  {name:'Luke Manktelow',        apps:19,goals:0},
-  {name:'Reggie Murray',         apps:21,goals:0},
-  {name:'Reegan John Stockdale', apps:21,goals:0},
-  {name:'Alfie Wakeman',         apps:23,goals:6},
-  {name:'George Winter',         apps:21,goals:1},
+  {name:'Aleckie Arthur',        apps:24,goals:23},
+  {name:'Christopher Barnes',    apps:24,goals:0},
+  {name:'Aidan Bays',            apps:23,goals:5},
+  {name:'Teddy Booker',          apps:23,goals:0},
+  {name:'Archie Brackell',       apps:20,goals:1},
+  {name:'Jax Colasanto',         apps:8, goals:3},
+  {name:'Jamie Hope',            apps:19,goals:0},
+  {name:'Daniel Kingsley-Lavoe', apps:19,goals:28},
+  {name:'Oliver Lee-Healey',     apps:23,goals:1},
+  {name:'Luke Manktelow',        apps:20,goals:0},
+  {name:'Reggie Murray',         apps:22,goals:0},
+  {name:'Reegan John Stockdale', apps:22,goals:0},
+  {name:'Alfie Wakeman',         apps:24,goals:6},
+  {name:'George Winter',         apps:22,goals:1},
 ];
 
 // First name -> full name lookup (includes removed players mapped to null)
@@ -1178,9 +1178,10 @@ var HUB_MATCHES_RAW=[
   ["vs L.I.C. FC (h)","Shield","D","2-2","Jamie Hope","Teddy","Aleckie, Aidan"],
   ["vs Sutton Dynamo FC (a)","Shield","W","2-3","Reggie Murray","Ollie","Daniel x2, Aleckie"],
   ["vs S.E. Eagles FC Gold (h)","Shield","D","4-4","Jax Colasanto","Aidan","Aidan, Daniel, Aleckie x2"],
+  ["vs Junior Reds Sabres (a)","Shield","W","9-4","Jax Colasanto","Reggie","Daniel x7, Aleckie x2"],
 ];
 
-var hubPlayers={}, hubTotalGames=23, hubSortCol='apps', hubSortDir=-1;
+var hubPlayers={}, hubTotalGames=24, hubSortCol='apps', hubSortDir=-1;
 var hubMatches=[];
 
 function getDukesRecord(){
