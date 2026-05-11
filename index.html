@@ -647,7 +647,7 @@ function enterMasterSection(s){
   if(s==='team'){
     document.getElementById('selkent-header').style.display='none';
     document.getElementById('team-hub-section').style.display='block';
-    ['league-section','shield-section','cup-section','friendly-section','league-controls','shield-controls','tab-bar','home-btn','logo-manage-btn','combined-page'].forEach(function(id){
+    ['league-section','shield-section','cup-section','friendly-section','highlights-section','league-controls','shield-controls','tab-bar','home-btn','logo-manage-btn','combined-page'].forEach(function(id){
       var el=document.getElementById(id); if(el) el.style.display='none';
     });
     if(Object.keys(hubPlayers).length===0) initHubPlayers();
@@ -667,7 +667,7 @@ function goHome(){ goMasterHome(); }
 function goMasterHome(){
   document.getElementById('master-landing').style.display='flex';
   document.getElementById('selkent-header').style.display='none';
-  ['team-hub-section','combined-page','league-section','shield-section','cup-section','friendly-section','league-controls','shield-controls','combined-page'].forEach(function(id){
+  ['team-hub-section','combined-page','league-section','shield-section','cup-section','friendly-section','highlights-section','league-controls','shield-controls','combined-page'].forEach(function(id){
     var el=document.getElementById(id); if(el) el.style.display='none';
   });
   var tb=document.getElementById('tab-bar'); if(tb) tb.style.display='none';
@@ -1777,7 +1777,7 @@ function showCombinedProfile(teamName){
   document.getElementById('master-landing').style.display='none';
   document.getElementById('combined-page').style.display='block';
   document.getElementById('selkent-header').style.display='block';
-  ['league-section','shield-section','cup-section','friendly-section','league-controls','shield-controls','team-hub-section'].forEach(function(id){document.getElementById(id).style.display='none';});
+  ['league-section','shield-section','cup-section','friendly-section','highlights-section','league-controls','shield-controls','team-hub-section'].forEach(function(id){document.getElementById(id).style.display='none';});
   document.getElementById('tab-bar').style.display='none';
   document.getElementById('home-btn').style.display='none';
   document.getElementById('logo-manage-btn').style.display='none';
