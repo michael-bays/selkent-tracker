@@ -226,6 +226,7 @@ tbody td.num{text-align:center;color:var(--muted);}
     <button class="tab-btn" id="tab-shield" onclick="switchTab('shield')">🛡️ Selkent Shield</button>
     <button class="tab-btn" id="tab-cup" onclick="switchTab('cup')">🏆 Selkent Cup</button>
     <button class="tab-btn" id="tab-friendly" onclick="switchTab('friendly')">🤝 Friendlies</button>
+    <button class="tab-btn" id="tab-highlights" onclick="switchTab('highlights')">🎬 Highlights</button>
   </div>
 </header>
 
@@ -588,12 +589,47 @@ tbody td.num{text-align:center;color:var(--muted);}
 
 <!-- ═══ FRIENDLY SECTION ═══ -->
 <div id="friendly-section" style="display:none;"><main style="max-width:900px;margin:0 auto;padding:24px 16px;">
-  <div style="text-align:center;padding:48px 24px;color:var(--muted);">
-    <div style="font-size:48px;margin-bottom:16px;">🤝</div>
-    <div style="font-family:'Oswald',sans-serif;font-weight:700;font-size:20px;color:var(--text);margin-bottom:8px;">Friendlies</div>
-    <div style="font-size:14px;line-height:1.6;">No friendly results yet this season.<br>Results will appear here when available.</div>
+  <div style="margin-bottom:18px;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;margin-bottom:18px;">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center;"><div style="font-family:'Oswald',sans-serif;font-weight:900;font-size:28px;line-height:1;color:var(--accent);">1</div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px;">Played</div></div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center;"><div style="font-family:'Oswald',sans-serif;font-weight:900;font-size:28px;line-height:1;color:var(--green);">1</div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px;">Wins</div></div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center;"><div style="font-family:'Oswald',sans-serif;font-weight:900;font-size:28px;line-height:1;color:var(--amber);">0</div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px;">Draws</div></div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center;"><div style="font-family:'Oswald',sans-serif;font-weight:900;font-size:28px;line-height:1;color:var(--red);">0</div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px;">Losses</div></div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center;"><div style="font-family:'Oswald',sans-serif;font-weight:900;font-size:28px;line-height:1;color:var(--green);">3</div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px;">Goals For</div></div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;text-align:center;"><div style="font-family:'Oswald',sans-serif;font-weight:900;font-size:28px;line-height:1;color:var(--red);">1</div><div style="font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px;">Goals Against</div></div>
+    </div>
+    <div class="panel" style="margin-bottom:18px;">
+      <div class="panel-header">🤝 <span>Friendly Results</span><span class="ci">▼</span></div>
+      <div class="panel-collapsible">
+        <div class="results-list">
+          <div class="result-row" style="padding:12px 16px;">
+            <div class="result-date">10/05/26</div>
+            <div style="font-size:11px;color:var(--muted);width:50px;flex-shrink:0;">Home</div>
+            <div class="result-teams" style="display:flex;align-items:center;gap:6px;"><span style="font-weight:600;">vs Cray Valley (PM) Black</span></div>
+            <div class="result-score">3 – 1</div>
+            <div class="result-outcome" style="background:#1a7a3c;color:#fff;">W</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </main></div>
+
+<!-- ═══ HIGHLIGHTS SECTION ═══ -->
+<div id="highlights-section" style="display:none;">
+<main style="max-width:900px;margin:0 auto;padding:24px 16px;">
+  <div style="margin-bottom:24px;">
+    <div style="font-family:'Oswald',sans-serif;font-weight:900;font-size:26px;letter-spacing:1px;color:var(--text);margin-bottom:4px;">🎬 Match Highlights</div>
+    <div style="font-size:13px;color:var(--muted);">AFC Green Court Dukes · 2025/26 Season</div>
+  </div>
+  <div id="highlights-list"></div>
+  <div id="highlights-empty" style="display:none;text-align:center;padding:60px 24px;color:var(--muted);">
+    <div style="font-size:48px;margin-bottom:16px;">🎬</div>
+    <div style="font-family:'Oswald',sans-serif;font-weight:700;font-size:18px;color:var(--text);margin-bottom:8px;">No Highlights Yet</div>
+    <div style="font-size:14px;line-height:1.6;">Match highlights will appear here when available.</div>
+  </div>
+</main>
+</div>
 
 <!-- ═══ HOME SEARCH (landing page search bar) ═══ -->
 <div id="home-search-wrap" style="display:none;width:100%;max-width:480px;margin-bottom:32px;position:relative;">
@@ -796,6 +832,8 @@ Navy:[
   ["22/03/26","Hayden Youth Panthers",8,0,"Slade Green Knights Greens"],
   ["29/03/26","Dartford Royals Blue",1,2,"Hayden Youth Panthers"],
   ["12/04/26","Danson Sports Purple",0,3,"Hayden Youth Panthers"],
+  ["10/05/26","Guru Nanak Youth",1,7,"Hayden Youth Panthers"],
+  ["10/05/26","Sutton Dynamo FC",4,1,"Slade Green Knights Greens"],
 ],
 Orange:[
   ["21/09/25","Abbeymead FC",1,1,"Junior Reds Sabres"],
@@ -869,6 +907,8 @@ Orange:[
   ["15/03/26","Danson Sports Yellow",1,2,"ST Sports FC Girls Sabres"],
   ["15/03/26","Shooters Hill AFC Green",4,0,"Dartford Royals Yellow"],
   ["22/03/26","Shooters Hill AFC Green",0,6,"AFC Green Court Knights"],
+  ["10/05/26","Dartford Royals White",0,4,"Junior Reds Sabres"],
+  ["10/05/26","ST Sports FC Girls Sabres",1,3,"AFC Green Court Knights"],
 ],
 Red:[
   ["21/09/25","Baldon Sports Hawks",3,0,"Beacons White"],
@@ -956,6 +996,8 @@ Red:[
   ["22/03/26","Baldon Sports Hawks",2,1,"Chislehurst Wanderers Tigers"],
   ["22/03/26","Chislehurst Wanderers Tigers",1,2,"Baldon Sports Hawks"],
   ["22/03/26","EWD Eagles Youth",3,0,"Swanley Rangers White"],
+  ["10/05/26","Blackheath Rhinos Grey",4,2,"Chislehurst Wanderers Tigers"],
+  ["10/05/26","Vikings FC Red",3,0,"Swanley Rangers White"],
 ],
 Sage:[
   ["21/09/25","Teviot Rangers Yellow",1,4,"Cray Valley (PM) FC Black"],
@@ -1095,6 +1137,7 @@ Silver:[
   ["22/03/26","Bermondsey Utd FC",2,0,"Ballers SE Yellow"],
   ["22/03/26","Dulwich Village Red",5,1,"L.I.C. FC"],
   ["29/03/26","Ballers SE Yellow",1,2,"Dulwich Village Red"],
+  ["03/05/26","L.I.C. FC",2,0,"Hillyfielders Falcons"],
 ],
 };
 
@@ -1130,12 +1173,12 @@ var SQUAD=[
   {name:'Archie Brackell',       apps:20,goals:1},
   {name:'Jax Colasanto',         apps:8, goals:3},
   {name:'Jamie Hope',            apps:19,goals:0},
-  {name:'Daniel Kingsley-Lavoe', apps:19,goals:28},
+  {name:'Daniel Kingsley-Lavoe', apps:19,goals:29},
   {name:'Oliver Lee-Healey',     apps:23,goals:1},
   {name:'Luke Manktelow',        apps:20,goals:0},
   {name:'Reggie Murray',         apps:22,goals:0},
   {name:'Reegan John Stockdale', apps:22,goals:0},
-  {name:'Alfie Wakeman',         apps:24,goals:6},
+  {name:'Alfie Wakeman',         apps:24,goals:7},
   {name:'George Winter',         apps:22,goals:1},
 ];
 
@@ -1179,9 +1222,10 @@ var HUB_MATCHES_RAW=[
   ["vs Sutton Dynamo FC (a)","Shield","W","2-3","Reggie Murray","Ollie","Daniel x2, Aleckie"],
   ["vs S.E. Eagles FC Gold (h)","Shield","D","4-4","Jax Colasanto","Aidan","Aidan, Daniel, Aleckie x2"],
   ["vs Junior Reds Sabres (a)","Shield","W","9-4","Jax Colasanto","Reggie","Daniel x7, Aleckie x2"],
+  ["vs Cray Valley (PM) Black (h)","Friendly","W","3-1","Alfie Wakeman","Reegan","Daniel x2, Alfie"],
 ];
 
-var hubPlayers={}, hubTotalGames=24, hubSortCol='apps', hubSortDir=-1;
+var hubPlayers={}, hubTotalGames=25, hubSortCol='apps', hubSortDir=-1;
 var hubMatches=[];
 
 function getDukesRecord(){
@@ -1419,6 +1463,44 @@ var activeTab='league', currentLeagueDiv='Navy', currentLeagueTeam=null;
 var currentShieldDiv='Sage', currentShieldTeam=null;
 var combLeagueDiv=null, combShieldDiv=null, combTeamName='';
 
+// ════════════════════════════════════════════════════════════════════
+// HIGHLIGHTS DATA
+// ════════════════════════════════════════════════════════════════════
+// Add entries here: {match, date, comp, url}
+var HIGHLIGHTS_DATA=[
+  // Example — uncomment and fill in your Veo links:
+  // {match:'vs S.E. Eagles FC Gold (h)', date:'08/05/26', comp:'Shield', url:'https://your-veo-link-here'},
+];
+
+function renderHighlights(){
+  var list=document.getElementById('highlights-list');
+  var empty=document.getElementById('highlights-empty');
+  if(!list) return;
+  if(!HIGHLIGHTS_DATA.length){
+    list.innerHTML='';
+    if(empty) empty.style.display='block';
+    return;
+  }
+  if(empty) empty.style.display='none';
+  var compColors={League:'var(--accent)',Shield:'var(--shield)',Cup:'#b7860d',Friendly:'#5a8a5a'};
+  var compIcons={League:'⚽',Shield:'🛡️',Cup:'🏆',Friendly:'🤝'};
+  list.innerHTML=HIGHLIGHTS_DATA.slice().reverse().map(function(h){
+    var cc=compColors[h.comp]||'var(--accent)';
+    var ci=compIcons[h.comp]||'⚽';
+    return '<div style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px 20px;margin-bottom:14px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">'
+      +'<div style="width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--header-bg),var(--header-dark));display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;">🎬</div>'
+      +'<div style="flex:1;min-width:140px;">'
+      +'<div style="font-family:\'Oswald\',sans-serif;font-weight:700;font-size:16px;color:var(--text);margin-bottom:4px;">'+h.match+'</div>'
+      +'<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">'
+      +'<span style="font-size:12px;color:var(--muted);">'+h.date+'</span>'
+      +'<span style="background:rgba(0,0,0,.06);color:'+cc+';border:1px solid '+cc+';border-radius:8px;padding:2px 9px;font-family:\'Oswald\',sans-serif;font-weight:700;font-size:11px;">'+ci+' '+h.comp+'</span>'
+      +'</div>'
+      +'</div>'
+      +'<a href="'+h.url+'" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;background:var(--header-bg);color:#fff;padding:9px 18px;border-radius:10px;text-decoration:none;font-family:\'Oswald\',sans-serif;font-weight:700;font-size:13px;letter-spacing:.5px;flex-shrink:0;white-space:nowrap;">▶ Watch</a>'
+      +'</div>';
+  }).join('');
+}
+
 function enterSection(s){
   document.getElementById('tab-bar').style.display='flex';
   document.getElementById('home-btn').style.display='flex';
@@ -1433,13 +1515,16 @@ function _switchTab(t){
   document.getElementById('shield-section').style.display=t==='shield'?'block':'none';
   document.getElementById('cup-section').style.display=t==='cup'?'block':'none';
   document.getElementById('friendly-section').style.display=t==='friendly'?'block':'none';
+  document.getElementById('highlights-section').style.display=t==='highlights'?'block':'none';
   document.getElementById('league-controls').style.display=t==='league'?'flex':'none';
   document.getElementById('shield-controls').style.display=t==='shield'?'flex':'none';
   document.getElementById('tab-league').className='tab-btn'+(t==='league'?' active-league':'');
   document.getElementById('tab-shield').className='tab-btn'+(t==='shield'?' active-shield':'');
   document.getElementById('tab-cup').className='tab-btn'+(t==='cup'?' active-cup':'');
   document.getElementById('tab-friendly').className='tab-btn'+(t==='friendly'?' active-league':'');
+  document.getElementById('tab-highlights').className='tab-btn'+(t==='highlights'?' active-league':'');
   if(t==='cup') renderCupSection();
+  if(t==='highlights') renderHighlights();
 }
 
 // ════════════════════════════════════════════════════════════════════
